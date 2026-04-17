@@ -1,0 +1,19 @@
+title: wokaka209 个人名片
+description: 嵌入式开发工程师 · 视觉处理专家 · 硬件设计
+theme: null
+plugins: []
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+future: true
+show_drafts: false
+limit_posts: 0
+excerpt_separator: "\n\n"
+include: [".htaccess"]
+exclude: ["README.md", "Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
+keep_files: [".git", ".svn"]
+timezone: nil
+lang: zh-CN
+encoding: utf-8
+safe: true
