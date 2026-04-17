@@ -10,20 +10,14 @@
     ============================================= -->
     
     <!-- 修改网页标题：显示在浏览器标签页上 -->
-    <title>个人名片 - wokaka209</title>
+    <title>wokaka209 - GitHub Profile</title>
     
     <style>
         /* ============================================
-           样式设置区域
-           如需调整整体风格，可修改以下颜色和字体
+           GitHub 风格全局样式设置
+           基于 GitHub 官方配色和排版
         ============================================= */
         
-        /* 
-         * 全局字体设置：
-         * - 中文使用宋体（SimSun）
-         * - 英文使用 Times New Roman
-         * - 这是一个正式的学术风格排版
-         */
         * {
             margin: 0;
             padding: 0;
@@ -32,344 +26,450 @@
 
         body {
             /* 
-             * 背景颜色设置：
-             * - 米黄色背景，模拟传统纸张质感
-             * - 适合学术风格
+             * GitHub 配色方案：
+             * - 背景色：浅色主题
+             * - 如果想要深色主题，改为 #0d1117
              */
-            background-color: #FAF0E6;  /* 米黄色背景，可修改为其他颜色如 #F5F5DC, #FFF8DC */
-            font-family: 'SimSun', 'Times New Roman', serif;  /* 宋体 + Times New Roman */
-            color: #333333;  /* 深灰色文字，易于阅读 */
-            line-height: 1.8;  /* 行高设置，提高阅读舒适度 */
+            background-color: #f6f8fa;  /* GitHub 浅色背景 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            color: #24292f;  /* GitHub 主文字颜色 */
+            line-height: 1.6;
             min-height: 100vh;
         }
 
+        /* 页面容器 */
         .container {
-            max-width: 900px;  /* 学术风格通常使用较窄的宽度，便于阅读 */
+            max-width: 1280px;  /* GitHub 最大宽度 */
             margin: 0 auto;
-            padding: 30px 20px;
-        }
-
-        .card {
-            background: #FFFFFF;  /* 白色卡片，与米黄色背景形成对比 */
-            border: 1px solid #D4C4A8;  /* 淡褐色边框，学术感 */
-            border-radius: 4px;  /* 轻微圆角，保持正式感 */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 柔和阴影 */
-            overflow: hidden;
-            margin-top: 20px;
+            padding: 40px 24px;
         }
 
         /* ============================================
-           头部信息区域
-           包含头像、姓名、职位/头衔、联系方式
+           GitHub 风格两栏布局
+           - 左侧：个人资料卡片
+           - 右侧：主要内容区域
         ============================================= */
-        .header {
-            background-color: #F0E6D2;  /* 浅米色头部背景 */
-            border-bottom: 2px solid #8B7355;  /* 深褐色下划线 */
-            padding: 50px 40px;
-            text-align: center;
+        .profile-layout {
+            display: flex;
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
         }
 
-        /* 
-         * 头像样式设置：
-         * - 支持圆形头像（注释掉 .avatar-circle 启用）
-         * - 支持方形头像（默认）
-         */
-        .avatar {
-            width: 150px;
-            height: 180px;  /* 照片比例 3:4 */
-            margin: 0 auto 25px;
+        /* ============================================
+           左侧边栏 - 个人资料卡片
+        ============================================= */
+        .profile-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 24px;
+            height: fit-content;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        /* 头像区域 */
+        .profile-avatar-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100px;
+        }
+
+        .profile-avatar {
+            width: 100%;
+            height: 100%;
+            margin: -65px 16px 0;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            background-color: #f6f8fa;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            color: #666;
-            background-color: #E8E0D0;
-            border: 1px solid #C4B49A;
+            font-size: 48px;
+            color: #8B7355;
             overflow: hidden;
             position: relative;
         }
 
         /* 
          * 插入头像图片的方法：
-         * 1. 将自己的照片命名为 "avatar.jpg" 或 "avatar.png"
-         * 2. 放在与 index.html 同一目录下
-         * 3. 取消下面注释即可显示头像照片
-         * 4. 或者直接将自己的照片拖入 images 文件夹，修改 src 路径
+         * 1. 将照片命名为 "avatar.jpg" 或 "avatar.png"
+         * 2. 放在 images 文件夹中
+         * 3. 取消下面 img 的注释
          */
-        .avatar img {
+        .profile-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .header h1 {
-            font-size: 2.2em;  /* 姓名字体大小 */
-            color: #2C2416;  /* 深褐色 */
-            margin-bottom: 15px;
-            font-weight: normal;  /* 宋体默认不加粗 */
-            letter-spacing: 3px;  /* 姓名间距 */
+        .profile-info {
+            padding: 16px;
         }
 
-        .header .title {
-            font-size: 1.1em;
-            color: #5D4E37;  /* 职位标题颜色 */
-            margin-bottom: 20px;
-            font-style: italic;  /* 斜体，学术风格 */
+        .profile-name {
+            font-size: 26px;
+            font-weight: 600;
+            color: #24292f;
+            margin-bottom: 4px;
+            line-height: 1.25;
         }
 
-        .header .institution {
-            font-size: 1em;
-            color: #7D6E57;
-            margin-bottom: 15px;
+        .profile-username {
+            font-size: 20px;
+            color: #57606a;
+            margin-bottom: 16px;
         }
 
-        /* 社交链接样式 - GitHub 徽标风格 */
+        .profile-bio {
+            font-size: 16px;
+            color: #24292f;
+            margin-bottom: 16px;
+        }
+
+        /* GitHub 风格按钮 */
+        .github-btn {
+            display: block;
+            width: 100%;
+            padding: 5px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #24292f;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .github-btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* 社交链接 - GitHub 徽标样式 */
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #D4C4A8;
-            flex-wrap: wrap;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #d0d7de;
         }
 
         .social-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
-            background-color: #F0E6D2;
-            color: #2C2416;
+            padding: 4px 0;
+            color: #24292f;
             text-decoration: none;
-            font-size: 0.9em;
-            border: 1px solid #C4B49A;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            font-size: 14px;
         }
 
         .social-link:hover {
-            background-color: #E8E0D0;
-            border-color: #8B7355;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            color: #0969da;
         }
 
         .social-link .icon {
-            font-size: 1.1em;
+            width: 16px;
+            color: #57606a;
+        }
+
+        /* 成就徽章 */
+        .achievements {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #d0d7de;
+        }
+
+        .achievements-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #57606a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .achievement-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #24292f;
+            background-color: #ddf4ff;
+            border: 1px solid #54aeff;
+            border-radius: 50px;
         }
 
         /* ============================================
-           各部分通用样式
-           技能、项目、教育背景、视频等部分
+           右侧主内容区域
         ============================================= */
-        .section {
-            padding: 40px 50px;
-            border-bottom: 1px solid #E8E0D0;
+        .main-content {
+            flex: 1;
+            min-width: 0;
         }
 
-        .section:last-child {
-            border-bottom: none;
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            margin-bottom: 24px;
+        }
+
+        /* Section 标题 */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid #d0d7de;
         }
 
         .section-title {
-            font-size: 1.5em;  /* 章节标题大小 */
-            color: #2C2416;
-            margin-bottom: 25px;
-            font-weight: bold;  /* 章节标题加粗 */
-            border-left: 4px solid #8B7355;  /* 左侧装饰线 */
-            padding-left: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #24292f;
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #57606a;
+            background: none;
+            border: 1px solid #d0d7de;
+            border-radius: 6px 6px 0 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:first-child {
+            background-color: #f6f8fa;
+            color: #24292f;
+        }
+
+        .tab-btn:hover {
+            color: #24292f;
+        }
+
+        /* 内容区域 */
+        .section-content {
+            padding: 16px;
         }
 
         /* ============================================
-           技能展示区域
-           使用简洁的列表形式，而非进度条
+           项目展示区 - GitHub Pinned Projects 风格
         ============================================= */
-        .skills-list {
-            list-style: none;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
-        .skill-item {
-            padding: 12px 15px;
-            border-bottom: 1px dotted #D4C4A8;  /* 点线分隔 */
-            color: #333;
-            font-size: 1.05em;
-            position: relative;
-            padding-left: 25px;
+        .project-card {
+            padding: 16px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
-        .skill-item:last-child {
-            border-bottom: none;
+        .project-card:hover {
+            border-color: #0969da;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .skill-item::before {
-            content: "•";
-            position: absolute;
-            left: 8px;
-            color: #8B7355;
-            font-weight: bold;
-        }
-
-        /* ============================================
-           项目展示区域
-           包含图片、标题、描述、标签
-        ============================================= */
-        .projects-list {
+        .project-header {
             display: flex;
-            flex-direction: column;
-            gap: 30px;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
-        .project-item {
-            display: flex;
-            gap: 25px;
-            padding: 20px;
-            background: #FDF8F0;  /* 淡米色背景 */
-            border: 1px solid #E8E0D0;
-            border-radius: 3px;
+        .project-icon {
+            font-size: 20px;
+            margin-right: 8px;
         }
 
-        /* 
-         * 项目图片样式：
-         * - 宽高比 16:9
-         * - 可通过 .project-image img 修改为其他比例
-         */
-        .project-image {
-            width: 280px;
-            height: 158px;  /* 16:9 比例 */
-            flex-shrink: 0;
-            background-color: #E8E0D0;
-            border: 1px solid #D4C4A8;
-            overflow: hidden;
-            position: relative;
+        .project-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0969da;
+            text-decoration: none;
         }
 
-        /* 
-         * 插入项目图片的方法：
-         * 1. 将项目图片命名为 "project1.jpg", "project2.jpg" 等
-         * 2. 放在与 index.html 同一目录下的 images 文件夹中
-         * 3. 修改下面 img 标签的 src 属性为图片路径
-         * 4. 如果不需要图片，可以删除整个 .project-image 元素
-         */
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .project-name:hover {
+            text-decoration: underline;
         }
 
-        /* 项目图片占位符提示文字 */
-        .project-image::after {
-            content: '点击查看项目图片';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #8B7355;
-            font-size: 0.85em;
-            pointer-events: none;
-        }
-
-        .project-content {
-            flex: 1;
-        }
-
-        .project-title {
-            font-size: 1.2em;
-            color: #2C2416;
-            margin-bottom: 10px;
-            font-weight: bold;
+        .project-visibility {
+            font-size: 12px;
+            color: #57606a;
+            padding: 0 7px;
+            background-color: #ddf4ff;
+            border: 1px solid #54aeff;
+            border-radius: 50px;
         }
 
         .project-description {
-            color: #555;
-            line-height: 1.7;
+            font-size: 14px;
+            color: #57606a;
             margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #57606a;
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .project-tags {
             display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #0969da;
+            background-color: #ddf4ff;
+            border-radius: 50px;
+        }
+
+        .tag::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #0969da;
+        }
+
+        /* ============================================
+           技能展示 - GitHub 语言标签风格
+        ============================================= */
+        .skills-grid {
+            display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .tag {
-            background: #E8E0D0;
-            color: #5D4E37;
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             padding: 4px 12px;
-            border-radius: 2px;
-            font-size: 0.85em;
-            border: 1px solid #D4C4A8;
+            font-size: 14px;
+            font-weight: 500;
+            color: #24292f;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: #f3f4f6;
+            border-color: #0969da;
         }
 
         /* ============================================
-           教育背景区域
-           简洁的学术风格展示
+           教育背景 - 简洁列表风格
         ============================================= */
-        .education-item {
-            padding: 20px 0;
-            border-bottom: 1px dotted #D4C4A8;
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .education-item:last-child {
-            border-bottom: none;
+        .education-item {
+            padding: 16px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
         }
 
         .education-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: center;
             margin-bottom: 8px;
         }
 
         .education-school {
-            color: #2C2416;
-            font-size: 1.15em;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 600;
+            color: #24292f;
         }
 
         .education-period {
-            color: #7D6E57;
-            font-size: 0.9em;
+            font-size: 14px;
+            color: #57606a;
         }
 
         .education-degree {
-            color: #5D4E37;
-            font-size: 1em;
-            margin-bottom: 5px;
+            font-size: 14px;
+            color: #57606a;
+            margin-bottom: 4px;
         }
 
         .education-note {
-            color: #666;
-            font-size: 0.9em;
+            font-size: 14px;
+            color: #57606a;
             font-style: italic;
         }
 
         /* ============================================
-           视频展示区域
-           学术风格视频展示
+           视频展示 - 简洁卡片风格
         ============================================= */
-        .video-list {
+        .video-grid {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 16px;
         }
 
         .video-item {
-            padding: 20px;
-            background: #FDF8F0;
-            border: 1px solid #E8E0D0;
-            border-radius: 3px;
+            padding: 16px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
         }
 
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;  /* 16:9 比例 */
-            height: 0;
+            padding-bottom: 56.25%;
+            margin-bottom: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 15px;
-            background-color: #E8E0D0;
         }
 
         .video-wrapper iframe {
@@ -382,92 +482,133 @@
         }
 
         .video-title {
-            font-size: 1.1em;
-            color: #2C2416;
-            margin-bottom: 8px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
+            color: #24292f;
+            margin-bottom: 4px;
         }
 
         .video-description {
-            color: #666;
-            font-size: 0.9em;
-            line-height: 1.6;
+            font-size: 14px;
+            color: #57606a;
         }
 
         /* ============================================
-           联系方式区域
+           统计信息 - GitHub 贡献统计风格
         ============================================= */
-        .contact-section {
-            background-color: #F0E6D2;
-            padding: 40px 50px;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
             text-align: center;
-            border-top: 2px solid #8B7355;
         }
 
-        .contact-info {
-            margin-bottom: 20px;
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #24292f;
+            margin-bottom: 4px;
         }
 
-        .contact-item {
-            color: #5D4E37;
-            margin: 10px 0;
-            font-size: 1em;
+        .stat-label {
+            font-size: 14px;
+            color: #57606a;
         }
 
-        .contact-item a {
-            color: #5D4E37;
+        /* 贡献日历（简化版） */
+        .contribution-graph {
+            padding: 16px;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+        }
+
+        .contribution-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #24292f;
+            margin-bottom: 12px;
+        }
+
+        .contribution-grid {
+            display: grid;
+            grid-template-columns: repeat(52, 1fr);
+            gap: 3px;
+            height: 100px;
+        }
+
+        .contribution-day {
+            background-color: #ebedf0;
+            border-radius: 2px;
+            transition: background-color 0.2s ease;
+        }
+
+        .contribution-day:nth-child(4n+1) { background-color: #9be9a8; }
+        .contribution-day:nth-child(4n+2) { background-color: #40c463; }
+        .contribution-day:nth-child(4n+3) { background-color: #30a14e; }
+        .contribution-day:nth-child(4n) { background-color: #216e39; }
+
+        /* ============================================
+           页脚
+        ============================================= */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            font-size: 14px;
+            color: #57606a;
+            border-top: 1px solid #d0d7de;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #0969da;
             text-decoration: none;
         }
 
-        .contact-item a:hover {
+        footer a:hover {
             text-decoration: underline;
-            color: #8B7355;
         }
 
-        /* 页脚样式 */
-        footer {
-            background: #2C2416;  /* 深褐色背景 */
-            color: #E8E0D0;  /* 浅色文字 */
-            text-align: center;
-            padding: 25px;
-            font-size: 0.9em;
-        }
-
-        /* 响应式设计：移动端适配 */
+        /* ============================================
+           响应式设计
+        ============================================= */
         @media (max-width: 768px) {
-            .header {
-                padding: 30px 20px;
+            .container {
+                padding: 16px;
             }
 
-            .header h1 {
-                font-size: 1.8em;
-                letter-spacing: 2px;
-            }
-
-            .section {
-                padding: 30px 20px;
-            }
-
-            .section-title {
-                font-size: 1.3em;
-            }
-
-            .project-item {
+            .profile-layout {
                 flex-direction: column;
             }
 
-            .project-image {
+            .profile-sidebar {
                 width: 100%;
-                height: 200px;
+                position: static;
             }
 
-            .education-header {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 12px;
             }
         }
 
-        /* 入场动画 - 保持简洁 */
+        /* 入场动画 */
         .animate-in {
             opacity: 0;
             transform: translateY(20px);
@@ -482,252 +623,337 @@
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div class="profile-layout">
             
             <!-- ============================================
-                 头部信息区域
-                 修改你的姓名、职位、机构、联系方式
+                 左侧边栏 - 个人资料卡片
             ============================================= -->
-            <div class="header">
-                
-                <!-- 
-                 * 头像图片插入方法：
-                 * 1. 将照片放在 images 文件夹中，命名为 "avatar.jpg"
-                 * 2. 或者直接放在 index.html 同目录下，命名为 "avatar.jpg"
-                 * 3. 取消下面注释即可显示：
-                 -->
-                <div class="avatar">
-                    <!-- <img src="images/avatar.jpg" alt="个人照片"> -->
-                    <!-- 或者使用同目录的图片： -->
-                    <!-- <img src="avatar.jpg" alt="个人照片"> -->
-                </div>
-                
-                <!-- 姓名：修改为你的名字 -->
-                <h1>wokaka209</h1>
-                
-                <!-- 职位/头衔：修改为你的职位或研究方向 -->
-                <p class="title">控制工程 · 硕士研究生</p>
-                
-                <!-- 机构/学校：修改为你所在的学校或单位 -->
-                <p class="institution">武汉理工大学</p>
-                
-                <!-- 社交链接：修改为你的个人链接 -->
-                <div class="social-links">
-                    <a href="https://github.com/wokaka209" class="social-link">
-                        <span class="icon">🐙</span>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:1325536985@qq.com" class="social-link">
-                        <span class="icon">📧</span>
-                        <span>邮箱</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ============================================
-                 专业技能区域
-                 修改技能列表
-            ============================================= -->
-            <div class="section animate-in">
-                <h2 class="section-title">专业技能</h2>
-                <ul class="skills-list">
-                    <li class="skill-item">STM32 嵌入式系统开发</li>
-                    <li class="skill-item">计算机视觉与图像处理</li>
-                    <li class="skill-item">OpenCV 视觉库应用</li>
-                    <li class="skill-item">PCB 电路设计与制作</li>
-                    <li class="skill-item">C/C++ 编程语言</li>
-                    <li class="skill-item">Python 数据处理</li>
-                </ul>
-            </div>
-
-            <!-- ============================================
-                 工程项目区域
-                 修改项目名称、描述、标签
-                 每个项目都可以插入一张图片
-            ============================================= -->
-            <div class="section animate-in">
-                <h2 class="section-title">工程项目</h2>
-                <div class="projects-list">
+            <aside class="profile-sidebar">
+                <div class="profile-card">
+                    <!-- 头像 -->
+                    <div class="profile-avatar-section">
+                        <div class="profile-avatar">
+                            <!-- <img src="images/avatar.jpg" alt="个人照片"> -->
+                        </div>
+                    </div>
                     
-                    <!-- 项目1 -->
-                    <div class="project-item">
-                        <!-- 
-                         * 项目图片插入方法：
-                         * 1. 将图片放在 images 文件夹中
-                         * 2. 修改 src 属性为图片路径
-                         * 3. 例如：src="images/project1.jpg"
-                         * 4. 如果不需要图片，可以删除整个 .project-image 元素
-                         -->
-                        <div class="project-image">
-                            <!-- <img src="images/project1.jpg" alt="智能视觉导航系统"> -->
+                    <!-- 个人信息 -->
+                    <div class="profile-info">
+                        <!-- 姓名：修改为你的名字 -->
+                        <h1 class="profile-name">wokaka209</h1>
+                        
+                        <!-- GitHub 用户名 -->
+                        <p class="profile-username">@wokaka209</p>
+                        
+                        <!-- 个人简介 -->
+                        <p class="profile-bio">
+                            控制工程硕士研究生 · 武汉理工大学<br>
+                            嵌入式开发 · 视觉处理 · PCB设计
+                        </p>
+                        
+                        <!-- GitHub 主页按钮 -->
+                        <a href="https://github.com/wokaka209" class="github-btn">
+                            👤 View on GitHub
+                        </a>
+                        
+                        <!-- 社交链接 -->
+                        <div class="social-links">
+                            <a href="https://github.com/wokaka209" class="social-link">
+                                <span class="icon">🐙</span>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="mailto:1325536985@qq.com" class="social-link">
+                                <span class="icon">📧</span>
+                                <span>1325536985@qq.com</span>
+                            </a>
                         </div>
-                        <div class="project-content">
-                            <h3 class="project-title">智能视觉导航系统</h3>
-                            <p class="project-description">
-                                基于 STM32 微控制器和 OpenCV 视觉库开发的自主导航机器人系统。
-                                实现实时图像识别、路径规划和障碍物检测功能，可应用于智能仓储和自动驾驶场景。
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">STM32</span>
-                                <span class="tag">OpenCV</span>
-                                <span class="tag">机器视觉</span>
-                                <span class="tag">自主导航</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 项目2 -->
-                    <div class="project-item">
-                        <div class="project-image">
-                            <!-- <img src="images/project2.jpg" alt="工业缺陷检测系统"> -->
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">工业产品缺陷检测系统</h3>
-                            <p class="project-description">
-                                针对工业生产线设计的高速视觉检测系统。
-                                采用 STM32F4 高性能芯片，结合图像处理算法实现产品表面缺陷的自动识别和分类。
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">STM32F4</span>
-                                <span class="tag">机器学习</span>
-                                <span class="tag">工业检测</span>
-                                <span class="tag">实时系统</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 项目3 -->
-                    <div class="project-item">
-                        <div class="project-image">
-                            <!-- <img src="images/project3.jpg" alt="多功能控制器开发板"> -->
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">多功能控制器开发板</h3>
-                            <p class="project-description">
-                                自主设计的 STM32 开发板，集成多种传感器接口和通信模块。
-                                支持蓝牙和 WiFi 无线通信，可用于智能家居和工业自动化控制系统。
-                            </p>
-                            <div class="project-tags">
-                                <span class="tag">STM32</span>
-                                <span class="tag">PCB设计</span>
-                                <span class="tag">KiCad</span>
-                                <span class="tag">嵌入式C</span>
+                        
+                        <!-- 成就徽章 -->
+                        <div class="achievements">
+                            <div class="achievements-title">Achievements</div>
+                            <div class="achievement-badges">
+                                <span class="badge">🏆 10 Commits</span>
+                                <span class="badge">⭐ 5 Stars</span>
+                                <span class="badge">📦 3 Projects</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
 
             <!-- ============================================
-                 教育背景区域
-                 修改学校名称、学位、在校时间
+                 右侧主内容区域
             ============================================= -->
-            <div class="section animate-in">
-                <h2 class="section-title">教育背景</h2>
+            <main class="main-content">
                 
-                <!-- 研究生学历 -->
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3 class="education-school">武汉理工大学</h3>
-                        <span class="education-period">2024年9月 - 2027年6月</span>
-                    </div>
-                    <p class="education-degree">控制科学与工程 · 硕士研究生（在读）</p>
-                    <p class="education-note">研究方向：智能控制、自动化系统</p>
-                </div>
-                
-                <!-- 本科学历 -->
-                <div class="education-item">
-                    <div class="education-header">
-                        <h3 class="education-school">成都信息工程大学</h3>
-                        <span class="education-period">2020年9月 - 2024年6月</span>
-                    </div>
-                    <p class="education-degree">自动化 · 本科（已毕业）</p>
-                    <p class="education-note">主修课程：自动控制原理、PLC编程、传感器技术、过程控制</p>
-                </div>
-                
-            </div>
-
-            <!-- ============================================
-                 创作视频区域
-                 修改视频标题和描述
-                 插入你的 YouTube/Bilibili 视频链接
-            ============================================= -->
-            <div class="section animate-in">
-                <h2 class="section-title">创作视频</h2>
-                <div class="video-list">
-                    
-                    <!-- 视频1 -->
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <!-- 
-                             * 视频嵌入方法：
-                             * 1. YouTube：将视频链接中的 watch?v= 替换为 embed/
-                             *    例如：https://www.youtube.com/watch?v=VIDEO_ID
-                             *    改为：https://www.youtube.com/embed/VIDEO_ID
-                             * 2. Bilibili：使用 iframe 嵌入代码
-                             *    从 Bilibili 视频页面的"分享" -> "嵌入代码"获取
-                             -->
-                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
+                <!-- 贡献统计 -->
+                <div class="content-card animate-in">
+                    <div class="section-content">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">贡献次数</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">项目数</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">5</div>
+                                <div class="stat-label">获得 Stars</div>
+                            </div>
                         </div>
-                        <h3 class="video-title">STM32 视觉导航机器人演示</h3>
-                        <p class="video-description">展示自主研发的视觉导航系统实现效果，包含实物演示和算法讲解</p>
-                    </div>
-
-                    <!-- 视频2 -->
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                        
+                        <!-- 贡献日历 -->
+                        <div class="contribution-graph">
+                            <div class="contribution-title">Contribution Activity</div>
+                            <div class="contribution-grid">
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                                <div class="contribution-day"></div>
+                            </div>
                         </div>
-                        <h3 class="video-title">OpenCV 图像处理教程</h3>
-                        <p class="video-description">从零开始学习 OpenCV 图像处理基础，包含环境配置和实战案例</p>
-                    </div>
-
-                    <!-- 视频3 -->
-                    <div class="video-item">
-                        <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
-                        </div>
-                        <h3 class="video-title">PCB 设计完整流程</h3>
-                        <p class="video-description">使用 KiCad 从原理图到 PCB 板的完整设计流程演示</p>
                     </div>
                 </div>
-            </div>
 
-            <!-- ============================================
-                 联系方式区域
-                 修改你的联系方式
-            ============================================= -->
-            <div class="contact-section">
-                <h2 class="section-title" style="justify-content: center;">联系方式</h2>
-                <div class="contact-info">
-                    <p class="contact-item">
-                        邮箱：<a href="mailto:wokaka209@example.com">wokaka209@example.com</a>
-                    </p>
-                    <p class="contact-item">
-                        GitHub：<a href="https://github.com/wokaka209">github.com/wokaka209</a>
-                    </p>
-                    <p class="contact-item">
-                        地址：湖北省武汉市洪山区珞狮路122号
-                    </p>
+                <!-- Pinned Projects -->
+                <div class="content-card animate-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Pinned</h2>
+                        <div class="section-tabs">
+                            <button class="tab-btn">🏗️ 3 projects</button>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="projects-grid">
+                            
+                            <!-- 项目1 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">📦</span>
+                                    <a href="#" class="project-name">智能视觉导航系统</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    基于 STM32 和 OpenCV 的自主导航机器人，实现实时图像识别、路径规划和障碍物检测功能。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 12</span>
+                                    <span class="project-meta-item">🔄 5</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">STM32</span>
+                                    <span class="tag">OpenCV</span>
+                                </div>
+                            </div>
+
+                            <!-- 项目2 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🔧</span>
+                                    <a href="#" class="project-name">工业检测设备</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    用于产品表面缺陷检测的嵌入式视觉系统，采用 STM32F4 系列芯片，结合图像处理算法。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 8</span>
+                                    <span class="project-meta-item">🔄 3</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">STM32F4</span>
+                                    <span class="tag">机器视觉</span>
+                                </div>
+                            </div>
+
+                            <!-- 项目3 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">⚡</span>
+                                    <a href="#" class="project-name">多功能控制器板</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    自主设计的 STM32 开发板，集成多种传感器接口，支持蓝牙、WiFi 通信。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 15</span>
+                                    <span class="project-meta-item">🔄 8</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">STM32</span>
+                                    <span class="tag">PCB设计</span>
+                                </div>
+                            </div>
+
+                            <!-- 项目4 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🎓</span>
+                                    <a href="#" class="project-name">个人项目网站</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    使用 HTML/CSS/JavaScript 构建的响应式个人网站，展示项目、技能和教育背景。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 3</span>
+                                    <span class="project-meta-item">🔄 2</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+                <!-- 专业技能 -->
+                <div class="content-card animate-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Skills</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="skills-grid">
+                            <span class="skill-tag">🔧 STM32 嵌入式开发</span>
+                            <span class="skill-tag">👁️ 计算机视觉处理</span>
+                            <span class="skill-tag">📷 OpenCV 图像处理</span>
+                            <span class="skill-tag">🔲 PCB 电路设计</span>
+                            <span class="skill-tag">💻 C/C++ 编程</span>
+                            <span class="skill-tag">🐍 Python 数据处理</span>
+                            <span class="skill-tag">🔌 硬件调试</span>
+                            <span class="skill-tag">⚙️ 自动控制</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 教育背景 -->
+                <div class="content-card animate-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Education</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="education-list">
+                            
+                            <!-- 研究生学历 -->
+                            <div class="education-item">
+                                <div class="education-header">
+                                    <h3 class="education-school">武汉理工大学</h3>
+                                    <span class="education-period">2024年9月 - 2027年6月</span>
+                                </div>
+                                <p class="education-degree">控制科学与工程 · 硕士研究生（在读）</p>
+                                <p class="education-note">研究方向：智能控制、自动化系统</p>
+                            </div>
+
+                            <!-- 本科学历 -->
+                            <div class="education-item">
+                                <div class="education-header">
+                                    <h3 class="education-school">成都信息工程大学</h3>
+                                    <span class="education-period">2020年9月 - 2024年6月</span>
+                                </div>
+                                <p class="education-degree">自动化 · 本科（已毕业）</p>
+                                <p class="education-note">主修课程：自动控制原理、PLC编程、传感器技术、过程控制</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创作视频 -->
+                <div class="content-card animate-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Videos</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="video-grid">
+                            
+                            <!-- 视频1 -->
+                            <div class="video-item">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
+                                </div>
+                                <h3 class="video-title">STM32 视觉导航机器人演示</h3>
+                                <p class="video-description">展示自主研发的视觉导航系统实现效果</p>
+                            </div>
+
+                            <!-- 视频2 -->
+                            <div class="video-item">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                                </div>
+                                <h3 class="video-title">OpenCV 图像处理教程</h3>
+                                <p class="video-description">从零开始学习 OpenCV 图像处理基础</p>
+                            </div>
+
+                            <!-- 视频3 -->
+                            <div class="video-item">
+                                <div class="video-wrapper">
+                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+                                </div>
+                                <h3 class="video-title">PCB 设计完整流程</h3>
+                                <p class="video-description">使用 KiCad 从原理图到 PCB 板的完整设计流程演示</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
 
         <footer>
-            <p>&copy; 2026 吴某某. 武汉理工大学. All rights reserved.</p>
+            <p>
+                © 2026 wokaka209 · 
+                <a href="https://github.com/wokaka209">View on GitHub</a> · 
+                Made with ❤️
+            </p>
         </footer>
     </div>
 
     <script>
         // 页面加载完成后添加动画效果
         document.addEventListener('DOMContentLoaded', function() {
-            // 观察器配置
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -30px 0px'
             };
 
-            // 创建观察器
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -736,7 +962,6 @@
                 });
             }, observerOptions);
 
-            // 观察所有需要动画的元素
             document.querySelectorAll('.animate-in').forEach(el => {
                 observer.observe(el);
             });
