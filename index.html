@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人名片 - wokaka209</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-top: 40px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 3px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skill-bar {
+            background: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .education-item {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+        }
+
+        .education-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .education-school {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .education-period {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.02);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="avatar">👨‍💻</div>
+                <h1>wokaka209</h1>
+                <p>全栈开发者 | 技术爱好者 | 创新者</p>
+                <div class="social-links">
+                    <a href="https://github.com/wokaka209" class="social-link" title="GitHub">🐙</a>
+                    <a href="#" class="social-link" title="LinkedIn">💼</a>
+                    <a href="#" class="social-link" title="邮箱">✉️</a>
+                </div>
+            </div>
+
+            <div class="section animate-in">
+                <h2 class="section-title">专业技能</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">前端开发 (React, Vue, HTML/CSS)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">后端开发 (Node.js, Python, Java)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">数据库 (MySQL, MongoDB, PostgreSQL)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">DevOps (Docker, Git, CI/CD)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">移动端开发 (React Native, Flutter)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">云计算 (AWS, Azure, GCP)</div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section animate-in">
+                <h2 class="section-title">工程项目</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">🚀</div>
+                        <div class="project-content">
+                            <h3 class="project-title">智能电商平台</h3>
+                            <p class="project-description">基于微服务架构的现代化电商解决方案，包含用户系统、商品管理、订单处理、支付集成等核心功能模块。</p>
+                            <div class="project-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">📱</div>
+                        <div class="project-content">
+                            <h3 class="project-title">社交媒体应用</h3>
+                            <p class="project-description">支持实时聊天、动态发布、多媒体分享的社交平台，具有完善的推荐算法和用户隐私保护机制。</p>
+                            <div class="project-tags">
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">GraphQL</span>
+                                <span class="tag">Redis</span>
+                                <span class="tag">WebSocket</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">🤖</div>
+                        <div class="project-content">
+                            <h3 class="project-title">AI 内容创作助手</h3>
+                            <p class="project-description">集成 GPT 模型的智能写作工具，支持文章生成、翻译、摘要提取等多种 AI 能力。</p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">OpenAI</span>
+                                <span class="tag">React</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section animate-in">
+                <h2 class="section-title">教育背景</h2>
+                <div class="education-item">
+                    <h3 class="education-title">计算机科学与技术 · 硕士</h3>
+                    <p class="education-school">某某大学</p>
+                    <p class="education-period">2020年9月 - 2023年6月</p>
+                </div>
+                <div class="education-item">
+                    <h3 class="education-title">软件工程 · 学士</h3>
+                    <p class="education-school">某某大学</p>
+                    <p class="education-period">2016年9月 - 2020年6月</p>
+                </div>
+            </div>
+
+            <div class="section animate-in">
+                <h2 class="section-title">创作视频</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">项目演示：电商平台完整功能展示</h3>
+                            <p class="video-description">详细介绍电商平台的核心功能和用户交互体验</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">技术教程：React Hooks 深入理解</h3>
+                            <p class="video-description">从零开始讲解 React Hooks 的使用方法和最佳实践</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">项目演示：AI 写作助手使用指南</h3>
+                            <p class="video-description">展示 AI 写作助手的功能和实际应用场景</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2 class="section-title" style="justify-content: center;">联系我</h2>
+                <p style="color: #666; margin: 20px 0;">如果你对我的作品感兴趣，欢迎联系我交流合作！</p>
+                <div class="contact-links">
+                    <a href="mailto:wokaka209@example.com" class="contact-link">
+                        ✉️ 发送邮件
+                    </a>
+                    <a href="https://github.com/wokaka209" class="contact-link">
+                        🐙 GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 wokaka209. All rights reserved. | Made with ❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
