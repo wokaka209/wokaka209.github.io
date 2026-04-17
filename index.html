@@ -81,9 +81,9 @@
         }
 
         .profile-avatar {
-            width: 248px;  /* GitHub 标准头像尺寸 */
-            height: 248px;
-            margin: -124px auto 0;  /* 负 margin 让头像覆盖背景，居中显示 */
+            width: 200px;  /* 调整头像尺寸 */
+            height: 200px;
+            margin: 0 auto 20px;  /* 居中显示，底部间距 */
             border-radius: 50%;  /* 圆形头像 */
             border: 4px solid #ffffff;
             background-color: #f6f8fa;
@@ -94,6 +94,7 @@
             color: #8B7355;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* 添加阴影效果 */
         }
 
         /* 
@@ -638,13 +639,15 @@
                 <div class="profile-card">
                     <!-- 头像 -->
                     <div class="profile-avatar-section">
-                        <div class="profile-avatar">
-                            <!-- <img src="images/avatar.jpg" alt="个人照片"> -->
-                        </div>
                     </div>
                     
                     <!-- 个人信息 -->
                     <div class="profile-info">
+                        <!-- 头像：移到个人信息区域内 -->
+                        <div class="profile-avatar">
+                            <!-- <img src="images/avatar.jpg" alt="个人照片"> -->
+                        </div>
+                        
                         <!-- 姓名：修改为你的名字 -->
                         <h1 class="profile-name">wokaka209</h1>
                         
