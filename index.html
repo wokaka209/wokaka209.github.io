@@ -123,26 +123,41 @@
             margin-bottom: 15px;
         }
 
-        /* 社交链接样式 */
+        /* 社交链接样式 - GitHub 徽标风格 */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 25px;
             padding-top: 20px;
             border-top: 1px solid #D4C4A8;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            color: #5D4E37;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: #F0E6D2;
+            color: #2C2416;
             text-decoration: none;
-            font-size: 0.95em;
-            transition: color 0.3s ease;
+            font-size: 0.9em;
+            border: 1px solid #C4B49A;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .social-link:hover {
-            color: #8B7355;
-            text-decoration: underline;
+            background-color: #E8E0D0;
+            border-color: #8B7355;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .social-link .icon {
+            font-size: 1.1em;
         }
 
         /* ============================================
@@ -176,26 +191,24 @@
         }
 
         .skill-item {
-            padding: 12px 0;
+            padding: 12px 15px;
             border-bottom: 1px dotted #D4C4A8;  /* 点线分隔 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: #333;
+            font-size: 1.05em;
+            position: relative;
+            padding-left: 25px;
         }
 
         .skill-item:last-child {
             border-bottom: none;
         }
 
-        .skill-name {
-            color: #333;
-            font-size: 1.05em;
-        }
-
-        .skill-level {
-            color: #7D6E57;
-            font-size: 0.9em;
-            font-style: italic;
+        .skill-item::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: #8B7355;
+            font-weight: bold;
         }
 
         /* ============================================
@@ -500,43 +513,30 @@
                 
                 <!-- 社交链接：修改为你的个人链接 -->
                 <div class="social-links">
-                    <a href="https://github.com/wokaka209" class="social-link">GitHub</a>
-                    <a href="mailto:1325536985@qq.com" class="social-link">邮箱</a>
-                    <a href="#" class="social-link">Bilibili</a>
+                    <a href="https://github.com/wokaka209" class="social-link">
+                        <span class="icon">🐙</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:1325536985@qq.com" class="social-link">
+                        <span class="icon">📧</span>
+                        <span>邮箱</span>
+                    </a>
                 </div>
             </div>
 
             <!-- ============================================
                  专业技能区域
-                 修改技能名称和熟练程度
+                 修改技能列表
             ============================================= -->
             <div class="section animate-in">
                 <h2 class="section-title">专业技能</h2>
                 <ul class="skills-list">
-                    <li class="skill-item">
-                        <span class="skill-name">STM32 嵌入式系统开发</span>
-                        <span class="skill-level">精通</span>
-                    </li>
-                    <li class="skill-item">
-                        <span class="skill-name">计算机视觉与图像处理</span>
-                        <span class="skill-level">熟练</span>
-                    </li>
-                    <li class="skill-item">
-                        <span class="skill-name">OpenCV 视觉库应用</span>
-                        <span class="skill-level">熟练</span>
-                    </li>
-                    <li class="skill-item">
-                        <span class="skill-name">PCB 电路设计与制作</span>
-                        <span class="skill-level">熟练</span>
-                    </li>
-                    <li class="skill-item">
-                        <span class="skill-name">C/C++ 编程语言</span>
-                        <span class="skill-level">熟练</span>
-                    </li>
-                    <li class="skill-item">
-                        <span class="skill-name">Python 数据处理</span>
-                        <span class="skill-level">熟练</span>
-                    </li>
+                    <li class="skill-item">STM32 嵌入式系统开发</li>
+                    <li class="skill-item">计算机视觉与图像处理</li>
+                    <li class="skill-item">OpenCV 视觉库应用</li>
+                    <li class="skill-item">PCB 电路设计与制作</li>
+                    <li class="skill-item">C/C++ 编程语言</li>
+                    <li class="skill-item">Python 数据处理</li>
                 </ul>
             </div>
 
