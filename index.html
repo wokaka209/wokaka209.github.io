@@ -26,22 +26,21 @@
 
         body {
             /* 
-             * GitHub 配色方案：
-             * - 背景色：浅色主题
-             * - 如果想要深色主题，改为 #0d1117
+             * GitHub Dark 模式配色方案
              */
-            background-color: #f6f8fa;  /* GitHub 浅色背景 */
+            background-color: #0d1117;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            color: #24292f;  /* GitHub 主文字颜色 */
+            color: #c9d1d9;
             line-height: 1.6;
             min-height: 100vh;
         }
 
         /* 页面容器 */
         .container {
-            max-width: 1280px;  /* GitHub 最大宽度 */
+            max-width: 1280px;
             margin: 0 auto;
             padding: 40px 24px;
+            background-color: transparent;
         }
 
         /* ============================================
@@ -68,8 +67,8 @@
         }
 
         .profile-card {
-            background: #ffffff;
-            border: 1px solid #d0d7de;
+            background: #161b22;
+            border: 1px solid #30363d;
             border-radius: 6px;
             overflow: hidden;
         }
@@ -117,7 +116,7 @@
         .profile-name {
             font-size: 26px;
             font-weight: 600;
-            color: #24292f;
+            color: #c9d1d9;
             margin-bottom: 4px;
             line-height: 1.25;
         }
@@ -225,8 +224,8 @@
         }
 
         .content-card {
-            background: #ffffff;
-            border: 1px solid #d0d7de;
+            background: #161b22;
+            border: 1px solid #30363d;
             border-radius: 6px;
             margin-bottom: 24px;
         }
@@ -236,14 +235,14 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px;
-            border-bottom: 1px solid #d0d7de;
+            padding: 12px;
+            border-bottom: 1px solid #30363d;
         }
 
         .section-title {
             font-size: 20px;
             font-weight: 600;
-            color: #24292f;
+            color: #c9d1d9;
         }
 
         .section-tabs {
@@ -313,7 +312,7 @@
         .project-name {
             font-size: 16px;
             font-weight: 600;
-            color: #0969da;
+            color: #58a6ff;
             text-decoration: none;
         }
 
@@ -332,7 +331,7 @@
 
         .project-description {
             font-size: 14px;
-            color: #57606a;
+            color: #8b949e;
             margin-bottom: 12px;
             line-height: 1.5;
         }
@@ -517,8 +516,8 @@
 
         .stat-card {
             padding: 16px;
-            background-color: #f6f8fa;
-            border: 1px solid #d0d7de;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
             border-radius: 6px;
             text-align: center;
         }
@@ -526,13 +525,13 @@
         .stat-value {
             font-size: 32px;
             font-weight: 700;
-            color: #24292f;
+            color: #c9d1d9;
             margin-bottom: 4px;
         }
 
         .stat-label {
             font-size: 14px;
-            color: #57606a;
+            color: #8b949e;
         }
 
         /* 贡献日历（简化版） */
@@ -575,13 +574,13 @@
             text-align: center;
             padding: 40px 24px;
             font-size: 14px;
-            color: #57606a;
-            border-top: 1px solid #d0d7de;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
             margin-top: 40px;
         }
 
         footer a {
-            color: #0969da;
+            color: #58a6ff;
             text-decoration: none;
         }
 
@@ -648,9 +647,6 @@
             ============================================= -->
             <aside class="profile-sidebar">
                 <div class="profile-card">
-                    <!-- 头像 -->
-                    <div class="profile-avatar-section">
-                    </div>
                     
                     <!-- 个人信息 -->
                     <div class="profile-info">
@@ -670,14 +666,6 @@
                         <a href="https://github.com/wokaka209" class="github-btn">
                             👤 View on GitHub
                         </a>
-                        
-                        <!-- 社交链接徽标 -->
-                        <div class="social-links">
-                            <img src="https://img.shields.io/badge/GitHub-wokaka209?style=flat&logo=github" alt="GitHub" style="margin: 4px;">
-                            <a href="mailto:m17318679619@163.com">
-                                <img src="https://img.shields.io/badge/Email-m17318679619@163.com?style=flat&logo=gmail" alt="Email" style="margin: 4px;">
-                            </a>
-                        </div>
                         
                         <!-- 成就徽章 -->
                         <div class="achievements">
@@ -710,7 +698,7 @@
                                 <div class="stat-label">Followers</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-value">0</div>
+                                <div class="stat-value">2</div>
                                 <div class="stat-label">Following</div>
                             </div>
                         </div>
@@ -806,16 +794,16 @@
                     </div>
                     <div class="section-content">
                         <div class="skills-grid">
-                            <span class="skill-tag">🔧 嵌入式开发</span>
-                            <span class="skill-tag">👁️ OpenMV/OpenCV 视觉处理</span>
-                            <span class="skill-tag">🔲 PCB 设计</span>
-                            <span class="skill-tag">💻 C/C++/Python</span>
-                            <span class="skill-tag">⚙️ PID 控制算法</span>
-                            <span class="skill-tag">🔌 硬件电路设计</span>
-                            <span class="skill-tag">🖨️ 3D 打印</span>
-                            <span class="skill-tag">📊 MATLAB/Simulink</span>
-                            <span class="skill-tag">🔧 Keil/CubeMX/VScode</span>
-                            <span class="skill-tag">📐 SolidWorks</span>
+                            <img src="https://img.shields.io/badge/-嵌入式开发-007ACC?style=flat&logo=embedded-systems" alt="嵌入式开发" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-OpenMV%2FOpenCV-00ADD8?style=flat&logo=opencv" alt="视觉处理" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-PCB设计-FF6B6B?style=flat&logo=pcb" alt="PCB设计" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-C%2FC%2B%2B%2FPython-ffd34e?style=flat&logo=python" alt="编程语言" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-PID控制-f97316?style=flat" alt="PID控制" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-硬件电路设计-3b82f6?style=flat&logo=circuit" alt="硬件电路" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-3D打印-10b981?style=flat&logo=3dprinting" alt="3D打印" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-MATLAB%2FSimulink-af66ff?style=flat&logo=mathworks" alt="MATLAB" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-Keil%2FCubeMX%2FVScode-0078D4?style=flat&logo=visual-studio-code" alt="开发工具" style="margin: 4px;">
+                            <img src="https://img.shields.io/badge/-SolidWorks-002B5B?style=flat&logo=dassault-systemes" alt="SolidWorks" style="margin: 4px;">
                         </div>
                     </div>
                 </div>
