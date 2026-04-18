@@ -482,6 +482,16 @@
             border: none;
         }
 
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none;
+        }
+
         .video-title {
             font-size: 16px;
             font-weight: 600;
@@ -645,11 +655,11 @@
                     <div class="profile-info">
                         <!-- 头像：移到个人信息区域内 -->
                         <div class="profile-avatar">
-                            <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="吴昊鑫">
+                            <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="Winston Wu">
                         </div>
                         
                         <!-- 姓名：修改为你的名字 -->
-                        <h1 class="profile-name">吴昊鑫</h1>
+                        <h1 class="profile-name">Winston Wu</h1>
                         
                         <!-- GitHub 用户名 -->
                         <p class="profile-username">@wokaka209</p>
@@ -917,28 +927,37 @@
                             <!-- 视频1 -->
                             <div class="video-item">
                                 <div class="video-wrapper">
-                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" allowfullscreen></iframe>
+                                    <video controls playsinline>
+                                        <source src="videos/pid.mp4" type="video/mp4">
+                                        您的浏览器不支持 video 标签
+                                    </video>
                                 </div>
-                                <h3 class="video-title">STM32 视觉导航机器人演示</h3>
-                                <p class="video-description">展示自主研发的视觉导航系统实现效果</p>
+                                <h3 class="video-title">经典PID控制算法介绍</h3>
+                                <p class="video-description">PID控制算法原理</p>    
                             </div>
 
                             <!-- 视频2 -->
                             <div class="video-item">
                                 <div class="video-wrapper">
-                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" allowfullscreen></iframe>
+                                    <video controls playsinline>
+                                        <source src="videos/数字PID.mp4" type="video/mp4">
+                                        您的浏览器不支持 video 标签
+                                    </video>
                                 </div>
-                                <h3 class="video-title">OpenCV 图像处理教程</h3>
-                                <p class="video-description">从零开始学习 OpenCV 图像处理基础</p>
+                                <h3 class="video-title">数字PID控制算法介绍</h3>
+                                <p class="video-description">数字PID控制算法原理与实现</p>
                             </div>
 
                             <!-- 视频3 -->
                             <div class="video-item">
                                 <div class="video-wrapper">
-                                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" allowfullscreen></iframe>
+                                    <video controls playsinline>
+                                        <source src="videos/git.mp4" type="video/mp4">
+                                        您的浏览器不支持 video 标签
+                                    </video>
                                 </div>
-                                <h3 class="video-title">PCB 设计完整流程</h3>
-                                <p class="video-description">使用 KiCad 从原理图到 PCB 板的完整设计流程演示</p>
+                                <h3 class="video-title">git 基础操作</h3>
+                                <p class="video-description">使用 git 进行代码版本控制</p>
                             </div>
                         </div>
                     </div>
@@ -950,7 +969,7 @@
             <p>
                 © 2026 Winston Wu · 
                 <a href="https://github.com/wokaka209">View on GitHub</a> · 
-                Made with ❤️
+                Made with Love
             </p>
         </footer>
     </div>
