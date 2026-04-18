@@ -77,12 +77,13 @@
         /* 头像区域 */
         .profile-avatar-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100px;
+            height: 98px;
+            opacity: 0.5;
         }
 
         .profile-avatar {
-            width: 200px;  /* 调整头像尺寸 */
-            height: 200px;
+            width: 100px;  /* 调整头像尺寸 */
+            height: 100px;
             margin: 0 auto 20px;  /* 居中显示，底部间距 */
             border-radius: 50%;  /* 圆形头像 */
             border: 4px solid #ffffff;
@@ -104,8 +105,8 @@
          * 3. 取消下面 img 的注释
          */
         .profile-avatar img {
-            width: 100%;
-            height: 100%;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
         }
 
@@ -788,17 +789,13 @@
                             <!-- 项目1：自动行驶小车 -->
                             <div class="project-card">
                                 <div class="project-header">
-                                    <span class="project-icon">�</span>
+                                    <span class="project-icon">🚗</span>
                                     <a href="#" class="project-name">自动行驶小车</a>
                                     <span class="project-visibility">Public</span>
                                 </div>
                                 <p class="project-description">
                                     基于 TIMSPM0 MCU 的自动行驶小车，实现伯努利双扭线等轨迹行驶。采用多传感器融合技术，软件滤波与多圈补偿算法，角度偏差稳定控制在 3° 以内。
                                 </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">🏆 省二等奖</span>
-                                    <span class="project-meta-item">🔄 2024.08</span>
-                                </div>
                                 <div class="project-tags">
                                     <span class="tag">TIMSPM0</span>
                                     <span class="tag">PID控制</span>
@@ -816,10 +813,6 @@
                                 <p class="project-description">
                                     基于 OpenMV 的病房识别与灰度循迹智能送药系统。采用数据集扩充和双重识别方法，送药任务平均时间 67s（指标 90s）。
                                 </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">🔄 2025.03</span>
-                                    <span class="project-meta-item">� 进行中</span>
-                                </div>
                                 <div class="project-tags">
                                     <span class="tag">OpenMV</span>
                                     <span class="tag">视觉识别</span>
@@ -837,10 +830,6 @@
                                 <p class="project-description">
                                     基于机器视觉的电磁炮自动瞄准系统。采用颜色特征与形状识别算法，目标追踪时间不超过 5s。解决了电容对电感放电的保护问题。
                                 </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">🏆 省一等奖</span>
-                                    <span class="project-meta-item">🔄 2024.03</span>
-                                </div>
                                 <div class="project-tags">
                                     <span class="tag">STM32</span>
                                     <span class="tag">OpenMV</span>
@@ -858,10 +847,6 @@
                                 <p class="project-description">
                                     基于 OpenMV 机器视觉实时识别风帆角度，通过 STM32 与数字 PID 控制算法，实现风帆角度误差 ±2° 的闭环控制。
                                 </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">🏆 国赛三等奖</span>
-                                    <span class="project-meta-item">🔄 2024.09</span>
-                                </div>
                                 <div class="project-tags">
                                     <span class="tag">STM32</span>
                                     <span class="tag">PID控制</span>
@@ -908,9 +893,17 @@
                                     <span class="education-period">2022年9月 - 至今</span>
                                 </div>
                                 <p class="education-degree">自动化专业 · 本科（在读）</p>
-                                <p class="education-degree">专业排名：1/142（前 1%）· 绩点：3.81/5</p>
+                                <p class="education-degree">专业排名：1/142（前 1%）</p>
                                 <p class="education-note">英语水平：CET-4、CET-6</p>
                                 <p class="education-note">核心课程：自动控制原理、微处理器与微计算机系统、模拟电子技术、数字电路与逻辑设计、电子系统设计与实现</p>
+                            </div>
+                            <!-- 研究生学历 -->
+                            <div class="education-item">
+                                <div class="education-header">
+                                    <h3 class="education-school">武汉理工大学</h3>
+                                    <span class="education-period">2026年9月 - 至今</span>
+                                </div>
+                                <p class="education-degree">控制工程 · 研究生（研0）</p>
                             </div>
                         </div>
                     </div>
@@ -940,7 +933,7 @@
                             <div class="video-item">
                                 <div class="video-wrapper">
                                     <video controls playsinline>
-                                        <source src="videos/数字PID.mp4" type="video/mp4">
+                                        <source src="videos/digital-pid.mp4" type="video/mp4">
                                         您的浏览器不支持 video 标签
                                     </video>
                                 </div>
