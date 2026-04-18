@@ -94,19 +94,14 @@
             color: #8B7355;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* 添加阴影效果 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* 
-         * 插入头像图片的方法：
-         * 1. 将照片命名为 "avatar.jpg" 或 "avatar.png"
-         * 2. 放在 images 文件夹中
-         * 3. 取消下面 img 的注释
-         */
         .profile-avatar img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
 
         .profile-info {
@@ -626,7 +621,7 @@
             .profile-avatar {
                 width: 120px;
                 height: 120px;
-                margin-top: -60px;
+                margin-top: 0;
             }
 
             .profile-name {
@@ -685,13 +680,8 @@
             .profile-avatar {
                 width: 100px;
                 height: 100px;
-                margin-top: -50px;
+                margin-top: 0;
                 border-width: 3px;
-            }
-
-            .profile-avatar img {
-                width: 100%;
-                height: 100%;
             }
 
             .profile-name {
