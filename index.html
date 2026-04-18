@@ -645,19 +645,20 @@
                     <div class="profile-info">
                         <!-- 头像：移到个人信息区域内 -->
                         <div class="profile-avatar">
-                            <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="Winston Wu">
+                            <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="吴昊鑫">
                         </div>
                         
                         <!-- 姓名：修改为你的名字 -->
-                        <h1 class="profile-name">Winston Wu</h1>
+                        <h1 class="profile-name">吴昊鑫</h1>
                         
                         <!-- GitHub 用户名 -->
                         <p class="profile-username">@wokaka209</p>
                         
                         <!-- 个人简介 -->
                         <p class="profile-bio">
-                            控制工程硕士研究生 · 武汉理工大学<br>
-                            嵌入式开发 · 视觉处理 · PCB设计
+                            自动化专业本科生 · 成都信息工程大学<br>
+                            嵌入式开发 · 视觉处理 · PCB设计<br>
+                            专业排名：1/142（前 1%）
                         </p>
                         
                         <!-- GitHub 主页按钮 -->
@@ -671,9 +672,9 @@
                                 <span class="icon">🐙</span>
                                 <span>GitHub</span>
                             </a>
-                            <a href="mailto:1325536985@qq.com" class="social-link">
+                            <a href="mailto:m17318679619@163.com" class="social-link">
                                 <span class="icon">📧</span>
-                                <span>1325536985@qq.com</span>
+                                <span>邮箱</span>
                             </a>
                         </div>
                         
@@ -681,9 +682,10 @@
                         <div class="achievements">
                             <div class="achievements-title">Achievements</div>
                             <div class="achievement-badges">
-                                <span class="badge">📦 20 Repositories</span>
-                                <span class="badge">👥 3 Followers</span>
-                                <span class="badge">🔧 0 Following</span>
+                                <span class="badge">🏆 省一等奖</span>
+                                <span class="badge">🏆 省二等奖</span>
+                                <span class="badge">🏆 国赛三等奖</span>
+                                <span class="badge">🏅 专业 1/142</span>
                             </div>
                         </div>
                     </div>
@@ -765,91 +767,95 @@
                 <!-- Pinned Projects -->
                 <div class="content-card animate-in">
                     <div class="section-header">
-                        <h2 class="section-title">Pinned</h2>
+                        <h2 class="section-title">Projects</h2>
                         <div class="section-tabs">
-                            <button class="tab-btn">🏗️ 3 projects</button>
+                            <button class="tab-btn">🏗️ 4 projects</button>
                         </div>
                     </div>
                     <div class="section-content">
                         <div class="projects-grid">
                             
-                            <!-- 项目1 -->
+                            <!-- 项目1：自动行驶小车 -->
                             <div class="project-card">
                                 <div class="project-header">
-                                    <span class="project-icon">📦</span>
-                                    <a href="#" class="project-name">智能视觉导航系统</a>
+                                    <span class="project-icon">�</span>
+                                    <a href="#" class="project-name">自动行驶小车</a>
                                     <span class="project-visibility">Public</span>
                                 </div>
                                 <p class="project-description">
-                                    基于 STM32 和 OpenCV 的自主导航机器人，实现实时图像识别、路径规划和障碍物检测功能。
+                                    基于 TIMSPM0 MCU 的自动行驶小车，实现伯努利双扭线等轨迹行驶。采用多传感器融合技术，软件滤波与多圈补偿算法，角度偏差稳定控制在 3° 以内。
                                 </p>
                                 <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 12</span>
-                                    <span class="project-meta-item">🔄 5</span>
+                                    <span class="project-meta-item">🏆 省二等奖</span>
+                                    <span class="project-meta-item">🔄 2024.08</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">TIMSPM0</span>
+                                    <span class="tag">PID控制</span>
+                                    <span class="tag">传感器融合</span>
+                                </div>
+                            </div>
+
+                            <!-- 项目2：智能送药小车 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🏥</span>
+                                    <a href="#" class="project-name">智能送药小车</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    基于 OpenMV 的病房识别与灰度循迹智能送药系统。采用数据集扩充和双重识别方法，送药任务平均时间 67s（指标 90s）。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">🔄 2025.03</span>
+                                    <span class="project-meta-item">� 进行中</span>
+                                </div>
+                                <div class="project-tags">
+                                    <span class="tag">OpenMV</span>
+                                    <span class="tag">视觉识别</span>
+                                    <span class="tag">串口屏HMI</span>
+                                </div>
+                            </div>
+
+                            <!-- 项目3：电磁炮自动瞄准系统 -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🎯</span>
+                                    <a href="#" class="project-name">电磁炮自动瞄准系统</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">
+                                    基于机器视觉的电磁炮自动瞄准系统。采用颜色特征与形状识别算法，目标追踪时间不超过 5s。解决了电容对电感放电的保护问题。
+                                </p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">🏆 省一等奖</span>
+                                    <span class="project-meta-item">🔄 2024.03</span>
                                 </div>
                                 <div class="project-tags">
                                     <span class="tag">STM32</span>
-                                    <span class="tag">OpenCV</span>
+                                    <span class="tag">OpenMV</span>
+                                    <span class="tag">DMA串口</span>
                                 </div>
                             </div>
 
-                            <!-- 项目2 -->
+                            <!-- 项目4：智能风帆控制系统 -->
                             <div class="project-card">
                                 <div class="project-header">
-                                    <span class="project-icon">🔧</span>
-                                    <a href="#" class="project-name">工业检测设备</a>
+                                    <span class="project-icon">⚓</span>
+                                    <a href="#" class="project-name">智能风帆控制系统</a>
                                     <span class="project-visibility">Public</span>
                                 </div>
                                 <p class="project-description">
-                                    用于产品表面缺陷检测的嵌入式视觉系统，采用 STM32F4 系列芯片，结合图像处理算法。
+                                    基于 OpenMV 机器视觉实时识别风帆角度，通过 STM32 与数字 PID 控制算法，实现风帆角度误差 ±2° 的闭环控制。
                                 </p>
                                 <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 8</span>
-                                    <span class="project-meta-item">🔄 3</span>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">STM32F4</span>
-                                    <span class="tag">机器视觉</span>
-                                </div>
-                            </div>
-
-                            <!-- 项目3 -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">⚡</span>
-                                    <a href="#" class="project-name">多功能控制器板</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">
-                                    自主设计的 STM32 开发板，集成多种传感器接口，支持蓝牙、WiFi 通信。
-                                </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 15</span>
-                                    <span class="project-meta-item">🔄 8</span>
+                                    <span class="project-meta-item">🏆 国赛三等奖</span>
+                                    <span class="project-meta-item">🔄 2024.09</span>
                                 </div>
                                 <div class="project-tags">
                                     <span class="tag">STM32</span>
-                                    <span class="tag">PCB设计</span>
-                                </div>
-                            </div>
-
-                            <!-- 项目4 -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🎓</span>
-                                    <a href="#" class="project-name">个人项目网站</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">
-                                    使用 HTML/CSS/JavaScript 构建的响应式个人网站，展示项目、技能和教育背景。
-                                </p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 3</span>
-                                    <span class="project-meta-item">🔄 2</span>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">HTML</span>
-                                    <span class="tag">CSS</span>
+                                    <span class="tag">PID控制</span>
+                                    <span class="tag">视觉反馈</span>
                                 </div>
                             </div>
                         </div>
@@ -863,14 +869,16 @@
                     </div>
                     <div class="section-content">
                         <div class="skills-grid">
-                            <span class="skill-tag">🔧 STM32 嵌入式开发</span>
-                            <span class="skill-tag">👁️ 计算机视觉处理</span>
-                            <span class="skill-tag">📷 OpenCV 图像处理</span>
-                            <span class="skill-tag">🔲 PCB 电路设计</span>
-                            <span class="skill-tag">💻 C/C++ 编程</span>
-                            <span class="skill-tag">🐍 Python 数据处理</span>
-                            <span class="skill-tag">🔌 硬件调试</span>
-                            <span class="skill-tag">⚙️ 自动控制</span>
+                            <span class="skill-tag">🔧 嵌入式开发</span>
+                            <span class="skill-tag">👁️ OpenMV/OpenCV 视觉处理</span>
+                            <span class="skill-tag">🔲 PCB 设计</span>
+                            <span class="skill-tag">💻 C/C++/Python</span>
+                            <span class="skill-tag">⚙️ PID 控制算法</span>
+                            <span class="skill-tag">🔌 硬件电路设计</span>
+                            <span class="skill-tag">🖨️ 3D 打印</span>
+                            <span class="skill-tag">📊 MATLAB/Simulink</span>
+                            <span class="skill-tag">🔧 Keil/CubeMX/VScode</span>
+                            <span class="skill-tag">📐 SolidWorks</span>
                         </div>
                     </div>
                 </div>
@@ -883,24 +891,16 @@
                     <div class="section-content">
                         <div class="education-list">
                             
-                            <!-- 研究生学历 -->
-                            <div class="education-item">
-                                <div class="education-header">
-                                    <h3 class="education-school">武汉理工大学</h3>
-                                    <span class="education-period">2024年9月 - 2027年6月</span>
-                                </div>
-                                <p class="education-degree">控制科学与工程 · 硕士研究生（在读）</p>
-                                <p class="education-note">研究方向：智能控制、自动化系统</p>
-                            </div>
-
                             <!-- 本科学历 -->
                             <div class="education-item">
                                 <div class="education-header">
                                     <h3 class="education-school">成都信息工程大学</h3>
-                                    <span class="education-period">2020年9月 - 2024年6月</span>
+                                    <span class="education-period">2022年9月 - 至今</span>
                                 </div>
-                                <p class="education-degree">自动化 · 本科（已毕业）</p>
-                                <p class="education-note">主修课程：自动控制原理、PLC编程、传感器技术、过程控制</p>
+                                <p class="education-degree">自动化专业 · 本科（在读）</p>
+                                <p class="education-degree">专业排名：1/142（前 1%）· 绩点：3.81/5</p>
+                                <p class="education-note">英语水平：CET-4、CET-6</p>
+                                <p class="education-note">核心课程：自动控制原理、微处理器与微计算机系统、模拟电子技术、数字电路与逻辑设计、电子系统设计与实现</p>
                             </div>
                         </div>
                     </div>
