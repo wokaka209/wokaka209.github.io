@@ -3,21 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ============================================
-         个人信息修改区域
-         请根据以下注释修改对应的个人信息
-    ============================================= -->
-    
-    <!-- 修改网页标题：显示在浏览器标签页上 -->
-    <title>Winston Wu (@wokaka209) - GitHub Profile</title>
-    
+    <title>wokaka209 ~ $</title>
+
     <style>
-        /* ============================================
-           GitHub 风格全局样式设置
-           基于 GitHub 官方配色和排版
-        ============================================= */
-        
         * {
             margin: 0;
             padding: 0;
@@ -25,318 +13,163 @@
         }
 
         body {
-            /* 
-             * GitHub Dark 模式配色方案
-             */
-            background-color: #0d1117;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            color: #c9d1d9;
-            line-height: 1.6;
+            background-color: #0c0c0c;
+            font-family: "Cascadia Code", "Fira Code", Consolas, "Source Code Pro", monospace;
+            color: #b0b0b0;
+            line-height: 1.7;
             min-height: 100vh;
+            font-size: 14px;
         }
 
-        /* 页面容器 */
         .container {
-            max-width: 1280px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 40px 24px;
-            background-color: transparent;
+            padding: 48px 32px;
         }
 
-        /* ============================================
-           GitHub 风格两栏布局
-           - 左侧：个人资料卡片
-           - 右侧：主要内容区域
-        ============================================= */
         .profile-layout {
             display: flex;
-            gap: 24px;
-            max-width: 1280px;
+            gap: 48px;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
-        /* ============================================
-           左侧边栏 - 个人资料卡片
-        ============================================= */
+        /* ============================
+           左侧栏 — terminal info 风格
+           ============================ */
         .profile-sidebar {
-            width: 280px;
+            width: 260px;
             flex-shrink: 0;
             position: sticky;
-            top: 24px;
+            top: 48px;
             height: fit-content;
         }
 
         .profile-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        /* 头像区域 */
-        .profile-avatar-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 98px;
-            opacity: 0.5;
+            padding: 24px 0;
+            border-right: 1px solid #222;
         }
 
         .profile-avatar {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
-            border: 4px solid #30363d;
-            background-color: #0d1117;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: #8B7355;
             overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            filter: grayscale(30%);
         }
 
         .profile-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
         }
 
-        .profile-info {
-            padding: 16px;
+        .terminal-line {
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .terminal-prompt {
+            color: #5eaaa8;
+        }
+
+        .terminal-comment {
+            color: #555;
         }
 
         .profile-name {
-            font-size: 26px;
+            font-size: 18px;
             font-weight: 600;
-            color: #c9d1d9;
-            margin-bottom: 4px;
-            line-height: 1.25;
+            color: #d0d0d0;
+            margin-bottom: 2px;
         }
 
         .profile-username {
-            font-size: 20px;
-            color: #8b949e;
-            margin-bottom: 16px;
+            font-size: 13px;
+            color: #6a6a6a;
+            margin-bottom: 20px;
         }
 
         .profile-bio {
-            font-size: 16px;
-            color: #24292f;
-            margin-bottom: 16px;
+            font-size: 13px;
+            color: #909090;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        /* GitHub 风格按钮 */
-        .github-btn {
-            display: block;
-            width: 100%;
-            padding: 5px 16px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #c9d1d9;
-            background-color: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            text-align: center;
+        .profile-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #5eaaa8;
             text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
         }
 
-        .github-btn:hover {
-            background-color: #f3f4f6;
+        .profile-link:hover {
+            color: #7ec8c6;
         }
 
-        /* 社交链接 - GitHub 徽标样式 */
-        .social-links {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #d0d7de;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 0;
-            color: #24292f;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .social-link:hover {
-            color: #0969da;
-        }
-
-        .social-link .icon {
-            width: 16px;
-            color: #57606a;
-        }
-
-        /* 成就徽章 */
-        .achievements {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #30363d;
-        }
-
-        .achievements-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #8b949e;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .achievement-badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 2px 8px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #24292f;
-            background-color: #ddf4ff;
-            border: 1px solid #54aeff;
-            border-radius: 50px;
-        }
-
-        /* ============================================
-           右侧主内容区域
-        ============================================= */
+        /* ============================
+           右侧主内容
+           ============================ */
         .main-content {
             flex: 1;
             min-width: 0;
         }
 
-        .content-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            margin-bottom: 24px;
+        .section-block {
+            margin-bottom: 40px;
         }
 
-        /* Section 标题 */
-        .section-header {
+        .section-heading {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        /* ============================
+           项目列表
+           ============================ */
+        .projects-list {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px;
-            border-bottom: 1px solid #30363d;
+            flex-direction: column;
+            gap: 18px;
         }
 
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #c9d1d9;
+        .project-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #1a1a1a;
         }
 
-        .section-tabs {
-            display: flex;
-            gap: 4px;
-        }
-
-        .tab-btn {
-            padding: 8px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #c9d1d9;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px 6px 0 0;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn:first-child {
-            background-color: #f6f8fa;
-            color: #24292f;
-        }
-
-        .tab-btn:hover {
-            background-color: #30363d;
-            color: #58a6ff;
-        }
-
-        /* 内容区域 */
-        .section-content {
-            padding: 16px;
-        }
-
-        /* ============================================
-           项目展示区 - GitHub Pinned Projects 风格
-        ============================================= */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .project-card {
-            padding: 16px;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .project-card:hover {
-            border-color: #58a6ff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .project-icon {
-            font-size: 20px;
-            margin-right: 8px;
+        .project-item:last-child {
+            border-bottom: none;
         }
 
         .project-name {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
-            color: #58a6ff;
+            color: #5eaaa8;
             text-decoration: none;
         }
 
         .project-name:hover {
-            text-decoration: underline;
+            color: #7ec8c6;
         }
 
-        .project-visibility {
-            font-size: 12px;
-            color: #8b949e;
-            padding: 0 7px;
-            background-color: rgba(56, 139, 253, 0.15);
-            border: 1px solid #58a6ff;
-            border-radius: 50px;
-        }
-
-        .project-description {
-            font-size: 14px;
-            color: #8b949e;
-            margin-bottom: 12px;
-            line-height: 1.5;
+        .project-desc {
+            font-size: 13px;
+            color: #808080;
+            margin-top: 4px;
+            line-height: 1.6;
         }
 
         .project-meta {
             display: flex;
-            gap: 16px;
+            gap: 14px;
+            margin-top: 6px;
             font-size: 12px;
-            color: #57606a;
+            color: #555;
         }
 
         .project-meta-item {
@@ -345,144 +178,58 @@
             gap: 4px;
         }
 
-        .language-dot {
-            width: 12px;
-            height: 12px;
+        .lang-dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             display: inline-block;
         }
 
-        .project-tags {
-            display: flex;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 2px 8px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #58a6ff;
-            background-color: rgba(56, 139, 253, 0.15);
-            border-radius: 50px;
-        }
-
-        .tag::before {
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #0969da;
-        }
-
-        /* ============================================
-           技能展示 - GitHub 语言标签风格
-        ============================================= */
-        .skills-grid {
+        /* ============================
+           技能标签
+           ============================ */
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
         .skill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 12px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #24292f;
-            background-color: #f6f8fa;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            font-size: 12px;
+            color: #909090;
+            padding: 3px 10px;
+            border: 1px solid #2a2a2a;
+            border-radius: 3px;
+            font-family: inherit;
         }
 
-        .skill-tag:hover {
-            background-color: #f3f4f6;
-            border-color: #0969da;
-        }
-
-        /* ============================================
-           教育背景 - 简洁列表风格
-        ============================================= */
-        .education-list {
+        /* ============================
+           视频
+           ============================ */
+        .video-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-        }
-
-        .education-item {
-            padding: 16px;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .education-school {
-            font-size: 18px;
-            font-weight: 600;
-            color: #c9d1d9;
-        }
-
-        .education-period {
-            font-size: 14px;
-            color: #57606a;
-        }
-
-        .education-degree {
-            font-size: 14px;
-            color: #8b949e;
-            margin-bottom: 4px;
-        }
-
-        .education-note {
-            font-size: 14px;
-            color: #8b949e;
-            font-style: italic;
-        }
-
-        /* ============================================
-           视频展示 - 简洁卡片风格
-        ============================================= */
-        .video-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .video-item {
-            padding: 16px;
-            border: 1px solid #30363d;
-            border-radius: 6px;
+            padding: 14px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .video-item:last-child {
+            border-bottom: none;
         }
 
         .video-wrapper {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            margin-bottom: 12px;
-            background-color: #0d1117;
-            border-radius: 6px;
+            margin-bottom: 10px;
+            background-color: #111;
+            border: 1px solid #1a1a1a;
+            border-radius: 2px;
             overflow: hidden;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         .video-wrapper video {
@@ -492,641 +239,245 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border: 1px solid #30363d;
         }
 
         .video-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #c9d1d9;
-            margin-bottom: 4px;
-        }
-
-        .video-description {
-            font-size: 14px;
-            color: #8b949e;
-        }
-
-        /* ============================================
-           统计信息 - GitHub 贡献统计风格
-        ============================================= */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .stat-card {
-            padding: 16px;
-            background-color: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #c9d1d9;
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #8b949e;
-        }
-
-        /* 贡献日历（简化版） */
-        .contribution-graph {
-            padding: 16px;
-            background-color: #f6f8fa;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-        }
-
-        .contribution-title {
             font-size: 14px;
             font-weight: 600;
-            color: #24292f;
-            margin-bottom: 12px;
+            color: #c0c0c0;
+            margin-bottom: 2px;
         }
 
-        .contribution-grid {
-            display: grid;
-            grid-template-columns: repeat(52, 1fr);
-            gap: 3px;
-            height: 100px;
+        .video-desc {
+            font-size: 12px;
+            color: #6a6a6a;
         }
 
-        .contribution-day {
-            background-color: #ebedf0;
-            border-radius: 2px;
-            transition: background-color 0.2s ease;
-        }
-
-        .contribution-day:nth-child(4n+1) { background-color: #9be9a8; }
-        .contribution-day:nth-child(4n+2) { background-color: #40c463; }
-        .contribution-day:nth-child(4n+3) { background-color: #30a14e; }
-        .contribution-day:nth-child(4n) { background-color: #216e39; }
-
-        /* ============================================
+        /* ============================
            页脚
-        ============================================= */
+           ============================ */
         footer {
             text-align: center;
-            padding: 40px 24px;
-            font-size: 14px;
-            color: #8b949e;
-            border-top: 1px solid #30363d;
-            margin-top: 40px;
+            padding: 48px 32px;
+            font-size: 12px;
+            color: #444;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 24px;
         }
 
         footer a {
-            color: #58a6ff;
+            color: #5eaaa8;
             text-decoration: none;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: #7ec8c6;
         }
 
-        /* ============================================
-           响应式设计 - 多设备适配
-        ============================================= */
-        
-        /* 平板设备 (768px - 1024px) */
+        /* ============================
+           响应式
+           ============================ */
+
+        /* 平板 */
         @media (max-width: 1024px) and (min-width: 769px) {
-            .container {
-                padding: 24px;
-            }
-            
-            .profile-sidebar {
-                width: 260px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .container { padding: 32px 24px; }
+            .profile-sidebar { width: 240px; }
+            .profile-layout { gap: 36px; }
         }
-        
-        /* 手机设备 (480px - 768px) - 苹果手机 */
-        @media (max-width: 768px) and (min-width: 481px) {
-            .container {
-                padding: 20px;
-            }
 
+        /* 手机 */
+        @media (max-width: 768px) {
+            .container { padding: 24px 20px; }
             .profile-layout {
                 flex-direction: column;
+                gap: 32px;
             }
-
             .profile-sidebar {
                 width: 100%;
                 position: static;
+                border-right: none;
             }
-
-            .profile-avatar {
-                width: 120px;
-                height: 120px;
-                margin-top: 0;
-            }
-
-            .profile-name {
-                font-size: 22px;
-            }
-
-            .profile-username {
-                font-size: 18px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .section-header {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .achievement-badges img {
-                max-width: 100%;
-                height: auto;
-                margin: 4px;
-            }
-            
-            .skills-grid img {
-                max-width: 100%;
-                height: auto;
-                margin: 4px;
-            }
-        }
-        
-        /* 小屏幕手机 (≤480px) - 小米手机等 */
-        @media (max-width: 480px) {
-            .container {
-                padding: 12px;
-            }
-
-            .profile-layout {
-                flex-direction: column;
-            }
-
-            .profile-sidebar {
-                width: 100%;
-                position: static;
-            }
-
             .profile-card {
-                padding: 12px;
+                border-right: none;
+                border-bottom: 1px solid #222;
+                padding: 0 0 24px 0;
             }
-
             .profile-avatar {
-                width: 100px;
-                height: 100px;
-                margin-top: 0;
-                border-width: 3px;
-            }
-
-            .profile-name {
-                font-size: 20px;
-            }
-
-            .profile-username {
-                font-size: 16px;
-            }
-            
-            .github-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-            }
-
-            .content-card {
-                padding: 12px;
+                width: 56px;
+                height: 56px;
                 margin-bottom: 16px;
             }
-
-            .section-header {
-                flex-direction: column;
-                gap: 8px;
-                padding: 10px;
-            }
-
-            .section-title {
-                font-size: 18px;
-            }
-
-            .section-content {
-                padding: 12px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .project-card {
-                padding: 12px;
-            }
-
-            .project-name {
-                font-size: 14px;
-            }
-
-            .project-description {
-                font-size: 13px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
-            .stat-card {
-                padding: 10px;
-            }
-
-            .stat-value {
-                font-size: 24px;
-            }
-
-            .stat-label {
-                font-size: 12px;
-            }
-
-            .education-item {
-                padding: 12px;
-            }
-
-            .education-school {
-                font-size: 16px;
-            }
-
-            .education-degree {
-                font-size: 13px;
-            }
-
-            .education-note {
-                font-size: 12px;
-            }
-
-            .video-item {
-                padding: 12px;
-            }
-
-            .video-title {
-                font-size: 14px;
-            }
-
-            .video-description {
-                font-size: 12px;
-            }
-
-            .achievements {
-                padding-top: 12px;
-                margin-top: 12px;
-            }
-
-            .achievements-title {
-                font-size: 11px;
-            }
-
-            .achievement-badges img {
-                max-width: 100%;
-                height: auto;
-                margin: 2px;
-            }
-            
-            .skills-grid {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-            
-            .skills-grid img {
-                max-width: calc(50% - 6px);
-                height: auto;
-                margin: 0;
-            }
-            
-            footer {
-                padding: 24px 12px;
-                font-size: 12px;
-            }
         }
 
-        /* 入场动画 */
-        .animate-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .animate-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        /* 小屏手机 */
+        @media (max-width: 480px) {
+            .container { padding: 16px 12px; }
+            .profile-layout { gap: 24px; }
+            .section-block { margin-bottom: 28px; }
+            .project-item, .video-item { padding: 10px 0; }
+            .profile-name { font-size: 16px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="profile-layout">
-            
-            <!-- ============================================
-                 左侧边栏 - 个人资料卡片
-            ============================================= -->
+
+            <!-- ============ 左侧栏 ============ -->
             <aside class="profile-sidebar">
                 <div class="profile-card">
-                    
-                    <!-- 个人信息 -->
-                    <div class="profile-info">
-                        <!-- 头像：移到个人信息区域内 -->
-                        <div class="profile-avatar">
-                            <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="Winston Wu">
-                        </div>
-                        
-                        <!-- 姓名：修改为你的名字 -->
-                        <h1 class="profile-name">Winston Wu</h1>
-                        
-                        <!-- GitHub 用户名 -->
-                        <p class="profile-username">@wokaka209</p>
-                        
-
-                        <!-- GitHub 主页按钮 -->
-                        <a href="https://github.com/wokaka209" class="github-btn">
-                            👤 View on GitHub
-                        </a>
-                        
-                        <!-- 成就徽章 -->
-                        <div class="achievements">
-                            <div class="achievements-title">Achievements</div>                            <div class="achievement-badges">
-                                <a href="https://img.shields.io/badge/-🏆国赛三等奖-facc15?style=flat" style="text-decoration: none;">
-                                    <img src="https://img.shields.io/badge/-🏆国赛三等奖-facc15?style=flat" alt="国赛三等奖" style="margin: 4px;">
-                                </a>
-                                <a href="https://img.shields.io/badge/-🏆省一等奖-4ade80?style=flat" style="text-decoration: none;">
-                                    <img src="https://img.shields.io/badge/-🏆省一等奖-4ade80?style=flat" alt="省一等奖" style="margin: 4px;">
-                                </a>
-                                <a href="https://img.shields.io/badge/-🏆省二等奖-60a5fa?style=flat" style="text-decoration: none;">
-                                    <img src="https://img.shields.io/badge/-🏆省二等奖-60a5fa?style=flat" alt="省二等奖" style="margin: 4px;">
-                                </a>
-                            </div>
-                        </div>
+                    <div class="profile-avatar">
+                        <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="avatar">
                     </div>
+
+                    <div class="terminal-line">
+                        <span class="terminal-comment">$ whoami</span>
+                    </div>
+                    <h1 class="profile-name">Winston Wu</h1>
+                    <p class="profile-username">wokaka209</p>
+
+                    <div class="terminal-line">
+                        <span class="terminal-comment">$ cat ~/bio</span>
+                    </div>
+                    <p class="profile-bio">
+                        嵌入式开发者，关注自动化控制与机器视觉。<br>
+                        用 C 和 Python 构建东西。
+                    </p>
+
+                    <div class="terminal-line">
+                        <span class="terminal-comment">$ gh profile</span>
+                    </div>
+                    <a href="https://github.com/wokaka209" class="profile-link">→ github.com/wokaka209</a>
                 </div>
             </aside>
 
-            <!-- ============================================
-                 右侧主内容区域
-            ============================================= -->
+            <!-- ============ 右侧内容 ============ -->
             <main class="main-content">
-                
-                <!-- 贡献统计 -->
-                <div class="content-card animate-in">
-                    <div class="section-content">
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-value">23</div>
-                                <div class="stat-label">仓库数</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value">3</div>
-                                <div class="stat-label">Followers</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value">5</div>
-                                <div class="stat-label">Following</div>
+
+                <!-- Projects -->
+                <div class="section-block">
+                    <div class="section-heading"># Projects</div>
+                    <div class="projects-list">
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/markdown_everything" class="project-name" target="_blank">markdown_everything</a>
+                            <p class="project-desc">AI agent skill — 将 20+ 种文档格式转换为 Markdown 的自动化工具。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item"><span class="lang-dot" style="background-color:#012456;"></span> PowerShell</span>
+                                <span class="project-meta-item">2 stars</span>
+                                <span class="project-meta-item">1 fork</span>
                             </div>
                         </div>
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/C-Python-NumPy-PyTorch-" class="project-name" target="_blank">C-Python-NumPy-PyTorch</a>
+                            <p class="project-desc">专为 C 语言开发者定制的深度学习入门教程。从 Python 对比到 PyTorch 实战，内含线性回归、MNIST 手写识别、情感分析完整项目代码。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item">0 stars</span>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/easy_mbti" class="project-name" target="_blank">easy_mbti</a>
+                            <p class="project-desc">MBTI 人格类型分析工具，Python 实现。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item"><span class="lang-dot" style="background-color:#3572A5;"></span> Python</span>
+                                <span class="project-meta-item">1 star</span>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/mediapipe_RSP_game" class="project-name" target="_blank">mediapipe_RSP_game</a>
+                            <p class="project-desc">MediaPipe 猜拳游戏 — 基于手势识别的石头剪刀布交互游戏。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item"><span class="lang-dot" style="background-color:#3572A5;"></span> Python</span>
+                                <span class="project-meta-item">0 stars</span>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/AGV_car" class="project-name" target="_blank">AGV_car</a>
+                            <p class="project-desc">CDIO 项目 — 自动导引小车（AGV）控制系统。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item"><span class="lang-dot" style="background-color:#555555;"></span> C</span>
+                                <span class="project-meta-item">0 stars</span>
+                            </div>
+                        </div>
+
+                        <div class="project-item">
+                            <a href="https://github.com/wokaka209/thesis-skill-hub" class="project-name" target="_blank">thesis-skill-hub</a>
+                            <p class="project-desc">硕士论文审查与写作 SKILL 聚合项目，持续收录 GitHub 上最优质的论文写作 skill。</p>
+                            <div class="project-meta">
+                                <span class="project-meta-item">0 stars</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Pinned Projects -->
-                <div class="content-card animate-in">
-                    <div class="section-header">
-                        <h2 class="section-title">Projects</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="projects-grid">
-
-                            <!-- markdown_everything -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">📦</span>
-                                    <a href="https://github.com/wokaka209/markdown_everything" class="project-name" target="_blank">markdown_everything</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">AI agent skill — 将 20+ 种文档格式转换为 Markdown 的自动化工具。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#012456;"></span> PowerShell</span>
-                                    <span class="project-meta-item">⭐ 2</span>
-                                    <span class="project-meta-item">🍴 1</span>
-                                </div>
-                            </div>
-
-                            <!-- C-Python-NumPy-PyTorch -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">📘</span>
-                                    <a href="https://github.com/wokaka209/C-Python-NumPy-PyTorch-" class="project-name" target="_blank">C-Python-NumPy-PyTorch</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">🚀 专为C语言开发者定制的深度学习入门教程。从Python对比到PyTorch实战，内含线性回归、MNIST手写识别、情感分析完整项目代码。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 0</span>
-                                </div>
-                            </div>
-
-                            <!-- easy_mbti -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🧠</span>
-                                    <a href="https://github.com/wokaka209/easy_mbti" class="project-name" target="_blank">easy_mbti</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">MBTI 人格类型分析工具，Python 实现。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#3572A5;"></span> Python</span>
-                                    <span class="project-meta-item">⭐ 1</span>
-                                </div>
-                            </div>
-
-                            <!-- mediapipe_RSP_game -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🎮</span>
-                                    <a href="https://github.com/wokaka209/mediapipe_RSP_game" class="project-name" target="_blank">mediapipe_RSP_game</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">MediaPipe 猜拳游戏 — 基于手势识别的石头剪刀布交互游戏。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#3572A5;"></span> Python</span>
-                                    <span class="project-meta-item">⭐ 0</span>
-                                </div>
-                            </div>
-
-                            <!-- AGV_car -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🚗</span>
-                                    <a href="https://github.com/wokaka209/AGV_car" class="project-name" target="_blank">AGV_car</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">CDIO 项目 — 自动导引小车（AGV）控制系统。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#555555;"></span> C</span>
-                                    <span class="project-meta-item">⭐ 0</span>
-                                </div>
-                            </div>
-
-                            <!-- thesis-skill-hub -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🎓</span>
-                                    <a href="https://github.com/wokaka209/thesis-skill-hub" class="project-name" target="_blank">thesis-skill-hub</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">硕士论文审查与写作 SKILL 聚合项目，持续收录 GitHub 上最优质的论文写作 skill。</p>
-                                <div class="project-meta">
-                                    <span class="project-meta-item">⭐ 0</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Skills -->
+                <div class="section-block">
+                    <div class="section-heading"># Skills</div>
+                    <div class="skills-list">
+                        <span class="skill-tag">嵌入式开发</span>
+                        <span class="skill-tag">OpenMV / OpenCV</span>
+                        <span class="skill-tag">PCB 设计</span>
+                        <span class="skill-tag">C / C++ / Python</span>
+                        <span class="skill-tag">PID 控制</span>
+                        <span class="skill-tag">硬件电路设计</span>
+                        <span class="skill-tag">3D 打印</span>
+                        <span class="skill-tag">MATLAB / Simulink</span>
+                        <span class="skill-tag">Keil / CubeMX / VSCode</span>
+                        <span class="skill-tag">SolidWorks</span>
                     </div>
                 </div>
 
-                <!-- 专业技能 -->
-                <div class="content-card animate-in">
-                    <div class="section-header">
-                        <h2 class="section-title">Skills</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="skills-grid">
-                            <img src="https://img.shields.io/badge/-嵌入式开发-007ACC?style=flat&logo=embedded-systems" alt="嵌入式开发" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-OpenMV%2FOpenCV-00ADD8?style=flat&logo=opencv" alt="视觉处理" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-PCB设计-FF6B6B?style=flat&logo=pcb" alt="PCB设计" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-C%2FC%2B%2B%2FPython-ffd34e?style=flat&logo=python" alt="编程语言" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-PID控制-f97316?style=flat" alt="PID控制" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-硬件电路设计-3b82f6?style=flat&logo=circuit" alt="硬件电路" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-3D打印-10b981?style=flat&logo=3dprinting" alt="3D打印" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-MATLAB%2FSimulink-af66ff?style=flat&logo=mathworks" alt="MATLAB" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-Keil%2FCubeMX%2FVScode-0078D4?style=flat&logo=visual-studio-code" alt="开发工具" style="margin: 4px;">
-                            <img src="https://img.shields.io/badge/-SolidWorks-002B5B?style=flat&logo=dassault-systemes" alt="SolidWorks" style="margin: 4px;">
+                <!-- Videos -->
+                <div class="section-block">
+                    <div class="section-heading"># Videos</div>
+                    <div class="video-list">
+
+                        <div class="video-item">
+                            <div class="video-wrapper">
+                                <video controls playsinline>
+                                    <source src="videos/pid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <h3 class="video-title">经典 PID 控制算法介绍</h3>
+                            <p class="video-desc">PID 控制算法原理</p>
                         </div>
+
+                        <div class="video-item">
+                            <div class="video-wrapper">
+                                <video controls playsinline>
+                                    <source src="videos/digital-pid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <h3 class="video-title">数字 PID 控制算法介绍</h3>
+                            <p class="video-desc">数字 PID 控制算法原理与实现</p>
+                        </div>
+
+                        <div class="video-item">
+                            <div class="video-wrapper">
+                                <video controls playsinline>
+                                    <source src="videos/git.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <h3 class="video-title">git 基础操作</h3>
+                            <p class="video-desc">使用 git 进行代码版本控制</p>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- 教育背景 -->
-                <div class="content-card animate-in">
-                    <div class="section-header">
-                        <h2 class="section-title">Education</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="education-list">
-                            
-                            <!-- 本科学历 -->
-                            <div class="education-item">
-                                <div class="education-header">
-                                    <h3 class="education-school">成都信息工程大学</h3>
-                                    <span class="education-period">2022年9月 - 至今</span>
-                                </div>
-                                <p class="education-degree">自动化专业 · 本科（在读）</p>
-                                <p class="education-degree">专业排名：1/142（前 1%）</p>
-                                <p class="education-note">英语水平：CET-4、CET-6</p>
-                                <p class="education-note">核心课程：自动控制原理、微处理器与微计算机系统、模拟电子技术、数字电路与逻辑设计、电子系统设计与实现</p>
-                            </div>
-                            <!-- 研究生学历 -->
-                            <div class="education-item">
-                                <div class="education-header">
-                                    <h3 class="education-school">武汉理工大学</h3>
-                                    <span class="education-period">2026年9月 - 至今</span>
-                                </div>
-                                <p class="education-degree">控制工程 · 研究生（研0）</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 创作视频 -->
-                <div class="content-card animate-in">
-                    <div class="section-header">
-                        <h2 class="section-title">Videos</h2>
-                    </div>
-                    <div class="section-content">
-                        <div class="video-grid">
-                            
-                            <!-- 视频1 -->
-                            <div class="video-item">
-                                <div class="video-wrapper">
-                                    <video controls playsinline>
-                                        <source src="videos/pid.mp4" type="video/mp4">
-                                        您的浏览器不支持 video 标签
-                                    </video>
-                                </div>
-                                <h3 class="video-title">经典PID控制算法介绍</h3>
-                                <p class="video-description">PID控制算法原理</p>    
-                            </div>
-
-                            <!-- 视频2 -->
-                            <div class="video-item">
-                                <div class="video-wrapper">
-                                    <video controls playsinline>
-                                        <source src="videos/digital-pid.mp4" type="video/mp4">
-                                        您的浏览器不支持 video 标签
-                                    </video>
-                                </div>
-                                <h3 class="video-title">数字PID控制算法介绍</h3>
-                                <p class="video-description">数字PID控制算法原理与实现</p>
-                            </div>
-
-                            <!-- 视频3 -->
-                            <div class="video-item">
-                                <div class="video-wrapper">
-                                    <video controls playsinline>
-                                        <source src="videos/git.mp4" type="video/mp4">
-                                        您的浏览器不支持 video 标签
-                                    </video>
-                                </div>
-                                <h3 class="video-title">git 基础操作</h3>
-                                <p class="video-description">使用 git 进行代码版本控制</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </main>
         </div>
 
         <footer>
             <p>
-                © 2026 Winston Wu · 
-                <a href="https://github.com/wokaka209">View on GitHub</a> · 
-                Made with html
+                wokaka209 · <a href="https://github.com/wokaka209">github</a>
             </p>
         </footer>
     </div>
-
-    <script>
-        // 页面加载完成后添加动画效果
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -30px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.animate-in').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
 </body>
 </html>
