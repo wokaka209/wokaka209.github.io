@@ -345,6 +345,13 @@
             gap: 4px;
         }
 
+        .language-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
         .project-tags {
             display: flex;
             gap: 8px;
@@ -881,7 +888,7 @@
                     <div class="section-content">
                         <div class="stats-grid">
                             <div class="stat-card">
-                                <div class="stat-value">20</div>
+                                <div class="stat-value">23</div>
                                 <div class="stat-label">仓库数</div>
                             </div>
                             <div class="stat-card">
@@ -889,7 +896,7 @@
                                 <div class="stat-label">Followers</div>
                             </div>
                             <div class="stat-card">
-                                <div class="stat-value">2</div>
+                                <div class="stat-value">5</div>
                                 <div class="stat-label">Following</div>
                             </div>
                         </div>
@@ -903,72 +910,87 @@
                     </div>
                     <div class="section-content">
                         <div class="projects-grid">
-                            
-                            <!-- 项目1：自动行驶小车 -->
+
+                            <!-- markdown_everything -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">📦</span>
+                                    <a href="https://github.com/wokaka209/markdown_everything" class="project-name" target="_blank">markdown_everything</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">AI agent skill — 将 20+ 种文档格式转换为 Markdown 的自动化工具。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#012456;"></span> PowerShell</span>
+                                    <span class="project-meta-item">⭐ 2</span>
+                                    <span class="project-meta-item">🍴 1</span>
+                                </div>
+                            </div>
+
+                            <!-- C-Python-NumPy-PyTorch -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">📘</span>
+                                    <a href="https://github.com/wokaka209/C-Python-NumPy-PyTorch-" class="project-name" target="_blank">C-Python-NumPy-PyTorch</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">🚀 专为C语言开发者定制的深度学习入门教程。从Python对比到PyTorch实战，内含线性回归、MNIST手写识别、情感分析完整项目代码。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 0</span>
+                                </div>
+                            </div>
+
+                            <!-- easy_mbti -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🧠</span>
+                                    <a href="https://github.com/wokaka209/easy_mbti" class="project-name" target="_blank">easy_mbti</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">MBTI 人格类型分析工具，Python 实现。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#3572A5;"></span> Python</span>
+                                    <span class="project-meta-item">⭐ 1</span>
+                                </div>
+                            </div>
+
+                            <!-- mediapipe_RSP_game -->
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <span class="project-icon">🎮</span>
+                                    <a href="https://github.com/wokaka209/mediapipe_RSP_game" class="project-name" target="_blank">mediapipe_RSP_game</a>
+                                    <span class="project-visibility">Public</span>
+                                </div>
+                                <p class="project-description">MediaPipe 猜拳游戏 — 基于手势识别的石头剪刀布交互游戏。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#3572A5;"></span> Python</span>
+                                    <span class="project-meta-item">⭐ 0</span>
+                                </div>
+                            </div>
+
+                            <!-- AGV_car -->
                             <div class="project-card">
                                 <div class="project-header">
                                     <span class="project-icon">🚗</span>
-                                    <a href="#" class="project-name">自动行驶小车</a>
+                                    <a href="https://github.com/wokaka209/AGV_car" class="project-name" target="_blank">AGV_car</a>
                                     <span class="project-visibility">Public</span>
                                 </div>
-                                <p class="project-description">
-                                    基于 TIMSPM0 MCU 的自动行驶小车，实现伯努利双扭线等轨迹行驶。采用多传感器融合技术，软件滤波与多圈补偿算法，角度偏差稳定控制在 3° 以内。
-                                </p>
-                                <div class="project-tags">
-                                    <span class="tag">TIMSPM0</span>
-                                    <span class="tag">PID控制</span>
-                                    <span class="tag">传感器融合</span>
+                                <p class="project-description">CDIO 项目 — 自动导引小车（AGV）控制系统。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item"><span class="language-dot" style="background-color:#555555;"></span> C</span>
+                                    <span class="project-meta-item">⭐ 0</span>
                                 </div>
                             </div>
 
-                            <!-- 项目2：智能送药小车 -->
+                            <!-- thesis-skill-hub -->
                             <div class="project-card">
                                 <div class="project-header">
-                                    <span class="project-icon">🏥</span>
-                                    <a href="#" class="project-name">智能送药小车</a>
+                                    <span class="project-icon">🎓</span>
+                                    <a href="https://github.com/wokaka209/thesis-skill-hub" class="project-name" target="_blank">thesis-skill-hub</a>
                                     <span class="project-visibility">Public</span>
                                 </div>
-                                <p class="project-description">
-                                    基于 OpenMV 的病房识别与灰度循迹智能送药系统。采用数据集扩充和双重识别方法，送药任务平均时间 67s（指标 90s）。
-                                </p>
-                                <div class="project-tags">
-                                    <span class="tag">OpenMV</span>
-                                    <span class="tag">视觉识别</span>
-                                    <span class="tag">串口屏HMI</span>
-                                </div>
-                            </div>
-
-                            <!-- 项目3：电磁炮自动瞄准系统 -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">🎯</span>
-                                    <a href="#" class="project-name">电磁炮自动瞄准系统</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">
-                                    基于机器视觉的电磁炮自动瞄准系统。采用颜色特征与形状识别算法，目标追踪时间不超过 5s。解决了电容对电感放电的保护问题。
-                                </p>
-                                <div class="project-tags">
-                                    <span class="tag">STM32</span>
-                                    <span class="tag">OpenMV</span>
-                                    <span class="tag">DMA串口</span>
-                                </div>
-                            </div>
-
-                            <!-- 项目4：智能风帆控制系统 -->
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <span class="project-icon">⚓</span>
-                                    <a href="#" class="project-name">智能风帆控制系统</a>
-                                    <span class="project-visibility">Public</span>
-                                </div>
-                                <p class="project-description">
-                                    基于 OpenMV 机器视觉实时识别风帆角度，通过 STM32 与数字 PID 控制算法，实现风帆角度误差 ±2° 的闭环控制。
-                                </p>
-                                <div class="project-tags">
-                                    <span class="tag">STM32</span>
-                                    <span class="tag">PID控制</span>
-                                    <span class="tag">视觉反馈</span>
+                                <p class="project-description">硕士论文审查与写作 SKILL 聚合项目，持续收录 GitHub 上最优质的论文写作 skill。</p>
+                                <div class="project-meta">
+                                    <span class="project-meta-item">⭐ 0</span>
                                 </div>
                             </div>
                         </div>
