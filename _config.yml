@@ -13,7 +13,7 @@ excerpt_separator: "\n\n"
 include: [".htaccess"]
 exclude: ["README.md", "Gemfile", "Gemfile.lock", "node_modules", "vendor/bundle/", "vendor/cache/", "vendor/gems/", "vendor/ruby/"]
 keep_files: [".git", ".svn"]
-timezone: nil
+timezone: Asia/Shanghai
 lang: zh-CN
 encoding: utf-8
 safe: true
