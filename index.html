@@ -12,327 +12,262 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #05070a;
+            --panel: rgba(10, 17, 22, 0.88);
+            --line: rgba(90, 130, 143, 0.25);
+            --line-bright: rgba(38, 229, 190, 0.5);
+            --text: #c8d5d8;
+            --muted: #708088;
+            --dim: #435159;
+            --cyan: #26e5be;
+            --green: #9cf59f;
+            --shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { scroll-behavior: smooth; }
 
         body {
-            background-color: #0c0c0c;
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(38, 229, 190, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(38, 229, 190, 0.035) 1px, transparent 1px),
+                radial-gradient(circle at 84% 8%, rgba(38, 229, 190, 0.12), transparent 28rem),
+                radial-gradient(circle at 8% 82%, rgba(62, 106, 255, 0.08), transparent 24rem);
+            background-size: 32px 32px, 32px 32px, auto, auto;
+            color: var(--text);
             font-family: "Cascadia Code", "Fira Code", Consolas, "Source Code Pro", monospace;
-            color: #b0b0b0;
+            font-size: 14px;
             line-height: 1.7;
             min-height: 100vh;
-            font-size: 14px;
         }
 
+        body::before {
+            background: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255, 255, 255, 0.012) 4px);
+            content: "";
+            inset: 0;
+            pointer-events: none;
+            position: fixed;
+            z-index: 10;
+        }
+
+        a { transition: color 160ms ease, border-color 160ms ease, background 160ms ease; }
+
         .container {
-            max-width: 1080px;
             margin: 0 auto;
-            padding: 48px 32px;
+            max-width: 1240px;
+            padding: 28px 32px 0;
+            position: relative;
+        }
+
+        .site-header {
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            gap: 28px;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            min-height: 42px;
+            padding-bottom: 18px;
+        }
+
+        .site-brand { color: var(--text); font-size: 13px; white-space: nowrap; }
+        .site-brand .host { color: var(--green); }
+        .site-brand .path { color: var(--cyan); }
+        .site-brand .separator { color: var(--dim); padding: 0 4px; }
+
+        .site-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+        .site-nav a {
+            color: var(--muted);
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .site-nav a::before { color: var(--dim); content: "./"; }
+        .site-nav a:hover { color: var(--cyan); }
+
+        .system-status {
+            align-items: center;
+            color: var(--green);
+            display: flex;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+        .status-dot {
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--green);
+            height: 6px;
+            margin-right: 8px;
+            width: 6px;
         }
 
         .profile-layout {
+            display: grid;
+            gap: 28px;
+            grid-template-columns: 286px minmax(0, 1fr);
+        }
+
+        .profile-sidebar { height: fit-content; position: sticky; top: 28px; }
+
+        .profile-card, .section-block {
+            background: linear-gradient(145deg, rgba(17, 29, 35, 0.93), var(--panel));
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .profile-card { overflow: hidden; padding: 0 22px 24px; }
+
+        .panel-chrome {
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+            color: var(--dim);
             display: flex;
-            gap: 48px;
-            max-width: 1080px;
-            margin: 0 auto;
+            font-size: 10px;
+            justify-content: space-between;
+            letter-spacing: 0.12em;
+            margin: 0 -22px 24px;
+            padding: 10px 14px;
         }
-
-        /* ============================
-           左侧栏 — terminal info 风格
-           ============================ */
-        .profile-sidebar {
-            width: 260px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 48px;
-            height: fit-content;
-        }
-
-        .profile-card {
-            padding: 24px 0;
-            border-right: 1px solid #222;
-        }
+        .panel-chrome::before { color: var(--cyan); content: "●  ●  ●"; letter-spacing: 0.16em; }
+        .panel-chrome span:first-child { margin-left: auto; margin-right: 12px; }
 
         .profile-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            overflow: hidden;
+            border: 1px solid var(--line-bright);
+            border-radius: 4px;
+            box-shadow: 8px 8px 0 rgba(38, 229, 190, 0.08);
+            height: 84px;
             margin-bottom: 24px;
-            filter: grayscale(30%);
-        }
-
-        .profile-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .terminal-line {
-            margin-bottom: 6px;
-            font-size: 13px;
-        }
-
-        .terminal-prompt {
-            color: #5eaaa8;
-        }
-
-        .terminal-comment {
-            color: #555;
-        }
-
-        .profile-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #d0d0d0;
-            margin-bottom: 2px;
-        }
-
-        .profile-username {
-            font-size: 13px;
-            color: #6a6a6a;
-            margin-bottom: 20px;
-        }
-
-        .profile-bio {
-            font-size: 13px;
-            color: #909090;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .profile-link {
-            display: inline-block;
-            font-size: 13px;
-            color: #5eaaa8;
-            text-decoration: none;
-        }
-
-        .profile-link:hover {
-            color: #7ec8c6;
-        }
-
-        /* ============================
-           右侧主内容
-           ============================ */
-        .main-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .section-block {
-            margin-bottom: 40px;
-        }
-
-        .section-heading {
-            font-size: 13px;
-            color: #555;
-            margin-bottom: 16px;
-            font-weight: 400;
-        }
-
-        /* ============================
-           项目列表
-           ============================ */
-        .projects-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .project-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .project-item:last-child {
-            border-bottom: none;
-        }
-
-        .project-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #5eaaa8;
-            text-decoration: none;
-        }
-
-        .project-name:hover {
-            color: #7ec8c6;
-        }
-
-        .project-desc {
-            font-size: 13px;
-            color: #808080;
-            margin-top: 4px;
-            line-height: 1.6;
-        }
-
-        .project-meta {
-            display: flex;
-            gap: 14px;
-            margin-top: 6px;
-            font-size: 12px;
-            color: #555;
-        }
-
-        .project-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .lang-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        /* ============================
-           技能标签
-           ============================ */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            font-size: 12px;
-            color: #909090;
-            padding: 3px 10px;
-            border: 1px solid #2a2a2a;
-            border-radius: 3px;
-            font-family: inherit;
-        }
-
-        /* ============================
-           视频
-           ============================ */
-        .video-list {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .video-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .video-item:last-child {
-            border-bottom: none;
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            margin-bottom: 10px;
-            background-color: #111;
-            border: 1px solid #1a1a1a;
-            border-radius: 2px;
             overflow: hidden;
+            position: relative;
+            width: 84px;
         }
-
-        .video-wrapper video {
+        .profile-avatar::after {
+            border: 1px solid rgba(156, 245, 159, 0.55);
+            content: "";
+            inset: 5px;
+            pointer-events: none;
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
+        .profile-avatar img { filter: grayscale(55%) contrast(1.1); height: 100%; object-fit: cover; width: 100%; }
 
-        .video-title {
-            font-size: 14px;
+        .terminal-line { color: var(--dim); font-size: 12px; margin-bottom: 5px; }
+        .terminal-comment { color: var(--muted); }
+
+        .profile-name { color: #f0fbf5; font-size: 21px; font-weight: 600; letter-spacing: -0.04em; line-height: 1.25; }
+        .profile-username { color: var(--cyan); font-size: 12px; margin-bottom: 22px; }
+        .profile-bio { color: var(--muted); font-size: 12px; line-height: 1.8; margin-bottom: 22px; }
+        .profile-link { color: var(--cyan); display: inline-block; font-size: 12px; text-decoration: none; }
+        .profile-link::before { color: var(--green); content: "↳ "; }
+        .profile-link:hover { color: #b7fff0; }
+
+        .main-content { min-width: 0; }
+
+        .section-block { margin-bottom: 24px; padding: 20px; }
+        .section-heading {
+            align-items: center;
+            color: var(--text);
+            display: flex;
+            font-size: 13px;
             font-weight: 600;
-            color: #c0c0c0;
-            margin-bottom: 2px;
+            justify-content: space-between;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+        .section-heading::before { color: var(--cyan); content: "root@wokaka209:~$"; font-size: 11px; font-weight: 400; margin-right: 10px; }
+        .section-heading::after { color: var(--dim); content: "[OK]"; font-size: 10px; font-weight: 400; }
+
+        .projects-list { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .project-item {
+            background: rgba(5, 10, 13, 0.48);
+            border: 1px solid rgba(90, 130, 143, 0.2);
+            min-width: 0;
+            padding: 15px;
+            position: relative;
+        }
+        .project-item::before { color: var(--dim); content: ">"; left: 7px; opacity: 0; position: absolute; top: 14px; transition: opacity 160ms ease; }
+        .project-item:hover { border-color: var(--line-bright); background: rgba(14, 36, 38, 0.55); }
+        .project-item:hover::before { opacity: 1; }
+        .project-name { color: var(--cyan); font-size: 13px; font-weight: 600; text-decoration: none; }
+        .project-name:hover { color: #b7fff0; }
+        .project-desc { color: var(--muted); font-size: 12px; line-height: 1.65; margin-top: 5px; }
+        .project-meta { color: var(--dim); display: flex; flex-wrap: wrap; font-size: 10px; gap: 12px; margin-top: 10px; }
+        .project-meta-item { align-items: center; display: flex; gap: 5px; }
+        .lang-dot { border-radius: 50%; display: inline-block; height: 6px; width: 6px; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag {
+            background: rgba(38, 229, 190, 0.04);
+            border: 1px solid rgba(38, 229, 190, 0.26);
+            color: var(--muted);
+            font-family: inherit;
+            font-size: 11px;
+            padding: 5px 9px;
+        }
+        .skill-tag::before { color: var(--cyan); content: "#"; margin-right: 4px; }
+        .skill-tag:hover { border-color: var(--cyan); color: var(--text); }
+
+        .video-list { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .video-item { background: rgba(5, 10, 13, 0.48); border: 1px solid rgba(90, 130, 143, 0.2); padding: 10px; }
+        .video-wrapper { background: #030506; border: 1px solid var(--line); margin-bottom: 10px; overflow: hidden; padding-bottom: 56.25%; position: relative; width: 100%; }
+        .video-wrapper::before { color: var(--green); content: "● REC / LOCAL_MEDIA"; font-size: 9px; left: 9px; letter-spacing: 0.08em; position: absolute; top: 5px; z-index: 1; }
+        .video-wrapper video { height: 100%; left: 0; object-fit: cover; position: absolute; top: 0; width: 100%; }
+        .video-title { color: var(--text); font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+        .video-desc { color: var(--muted); font-size: 11px; }
+
+        footer { border-top: 1px solid var(--line); color: var(--dim); font-size: 11px; margin-top: 32px; padding: 24px 32px 32px; text-align: center; }
+        footer a { color: var(--cyan); text-decoration: none; }
+        footer a:hover { color: #b7fff0; }
+
+        @media (max-width: 1024px) {
+            .container { padding-left: 24px; padding-right: 24px; }
+            .profile-layout { gap: 20px; grid-template-columns: 250px minmax(0, 1fr); }
         }
 
-        .video-desc {
-            font-size: 12px;
-            color: #6a6a6a;
-        }
-
-        /* ============================
-           页脚
-           ============================ */
-        footer {
-            text-align: center;
-            padding: 48px 32px;
-            font-size: 12px;
-            color: #444;
-            border-top: 1px solid #1a1a1a;
-            margin-top: 24px;
-        }
-
-        footer a {
-            color: #5eaaa8;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: #7ec8c6;
-        }
-
-        /* ============================
-           响应式
-           ============================ */
-
-        /* 平板 */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .container { padding: 32px 24px; }
-            .profile-sidebar { width: 240px; }
-            .profile-layout { gap: 36px; }
-        }
-
-        /* 手机 */
         @media (max-width: 768px) {
-            .container { padding: 24px 20px; }
-            .profile-layout {
-                flex-direction: column;
-                gap: 32px;
-            }
-            .profile-sidebar {
-                width: 100%;
-                position: static;
-            }
-            .profile-card {
-                border-right: none;
-                border-bottom: 1px solid #222;
-                padding: 0 0 24px 0;
-            }
-            .profile-avatar {
-                width: 56px;
-                height: 56px;
-                margin-bottom: 16px;
-            }
+            .container { padding: 20px 16px 0; }
+            .site-header { align-items: flex-start; flex-wrap: wrap; gap: 12px 20px; margin-bottom: 20px; }
+            .site-nav { order: 3; width: 100%; }
+            .profile-layout { display: flex; flex-direction: column; gap: 20px; }
+            .profile-sidebar { position: static; }
+            .profile-card { padding-bottom: 20px; }
+            .profile-avatar { height: 68px; width: 68px; }
+            .projects-list, .video-list { grid-template-columns: 1fr; }
         }
 
-        /* 小屏手机 */
         @media (max-width: 480px) {
-            .container { padding: 16px 12px; }
-            .profile-layout { gap: 24px; }
-            .section-block { margin-bottom: 28px; }
-            .project-item, .video-item { padding: 10px 0; }
-            .profile-name { font-size: 16px; }
+            body { font-size: 13px; }
+            .container { padding-left: 10px; padding-right: 10px; }
+            .system-status { display: none; }
+            .site-nav { gap: 12px; }
+            .section-block { padding: 14px; }
+            .section-heading { align-items: flex-start; flex-wrap: wrap; gap: 5px; }
+            .section-heading::after { margin-left: auto; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <header class="site-header">
+            <div class="site-brand">
+                <span class="host">wokaka209@github</span><span class="separator">:</span><span class="path">~</span><span class="separator">$</span>
+            </div>
+            <nav class="site-nav" aria-label="页面导航">
+                <a href="#projects">projects</a>
+                <a href="#skills">skills</a>
+                <a href="#videos">videos</a>
+            </nav>
+            <div class="system-status"><span class="status-dot"></span>SYSTEM ONLINE</div>
+        </header>
+
         <div class="profile-layout">
 
             <!-- ============ 左侧栏 ============ -->
             <aside class="profile-sidebar">
                 <div class="profile-card">
+                    <div class="panel-chrome"><span>PROFILE_NODE</span><span>v1.0.0</span></div>
                     <div class="profile-avatar">
                         <img src="https://avatars.githubusercontent.com/u/121944297?v=4&s=400" alt="avatar">
                     </div>
@@ -362,7 +297,7 @@
             <main class="main-content">
 
                 <!-- Projects -->
-                <div class="section-block">
+                <div class="section-block" id="projects">
                     <div class="section-heading"># Projects</div>
                     <div class="projects-list">
 
@@ -476,7 +411,7 @@
                 </div>
 
                 <!-- Skills -->
-                <div class="section-block">
+                <div class="section-block" id="skills">
                     <div class="section-heading"># Skills</div>
                     <div class="skills-list">
                         <span class="skill-tag">嵌入式开发</span>
@@ -493,7 +428,7 @@
                 </div>
 
                 <!-- Videos -->
-                <div class="section-block">
+                <div class="section-block" id="videos">
                     <div class="section-heading"># Videos</div>
                     <div class="video-list">
 
