@@ -135,10 +135,13 @@
         .site-nav a {
             color: var(--muted);
             font-size: 12px;
+            padding: 6px 8px;
             text-decoration: none;
+            background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 1px) / 0 1px;
+            transition: color 160ms ease, background-size 180ms ease;
         }
         .site-nav a::before { color: var(--dim); content: "./"; }
-        .site-nav a:hover { color: var(--cyan); }
+        .site-nav a:hover { background-size: 100% 1px; color: var(--cyan); }
 
         .system-status {
             align-items: center;
@@ -149,12 +152,17 @@
             white-space: nowrap;
         }
         .status-dot {
+            animation: status-pulse 1.8s ease-in-out infinite;
             background: var(--green);
             border-radius: 50%;
             box-shadow: 0 0 12px var(--green);
             height: 6px;
             margin-right: 8px;
             width: 6px;
+        }
+        @keyframes status-pulse {
+            0%, 100% { box-shadow: 0 0 6px var(--green); opacity: 0.85; }
+            50% { box-shadow: 0 0 14px var(--green), 0 0 4px rgba(156, 245, 159, 0.6); opacity: 1; }
         }
 
         .profile-layout {
@@ -214,6 +222,11 @@
             position: absolute;
         }
         .profile-avatar img { filter: grayscale(55%) contrast(1.1); height: 100%; object-fit: cover; width: 100%; }
+        .profile-avatar:hover { animation: avatar-breathe 1.8s ease-in-out infinite alternate; }
+        @keyframes avatar-breathe {
+            from { box-shadow: 8px 8px 0 rgba(38, 229, 190, 0.08), 0 0 6px rgba(38, 229, 190, 0.15); }
+            to { box-shadow: 8px 8px 0 rgba(38, 229, 190, 0.12), 0 0 18px rgba(38, 229, 190, 0.42); }
+        }
 
         .terminal-line { color: var(--dim); font-size: 12px; margin-bottom: 5px; }
         .terminal-comment { color: var(--muted); }
@@ -275,8 +288,25 @@
             position: relative;
         }
         .project-item::before { color: var(--dim); content: ">"; left: 7px; opacity: 0; position: absolute; top: 14px; transition: opacity 160ms ease; }
+        .project-item::after {
+            background: linear-gradient(180deg, transparent, rgba(38, 229, 190, 0.16), transparent);
+            content: "";
+            height: 2px;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
         .project-item:hover { border-color: var(--line-bright); background: rgba(14, 36, 38, 0.55); }
+        .project-item:hover { box-shadow: 0 0 0 1px rgba(38, 229, 190, 0.22), 0 0 18px rgba(38, 229, 190, 0.08); }
         .project-item:hover::before { opacity: 1; }
+        .project-item:hover::after { animation: scan 0.45s linear; }
+        @keyframes scan {
+            0% { opacity: 1; top: 0; }
+            100% { opacity: 0; top: calc(100% - 2px); }
+        }
         .project-name { color: var(--cyan); font-size: 13px; font-weight: 600; text-decoration: none; }
         .project-name:hover { color: #b7fff0; }
         .project-desc { color: var(--muted); font-size: 12px; line-height: 1.65; margin-top: 5px; }
@@ -294,7 +324,7 @@
             padding: 5px 9px;
         }
         .skill-tag::before { color: var(--cyan); content: "#"; margin-right: 4px; }
-        .skill-tag:hover { border-color: var(--cyan); color: var(--text); }
+        .skill-tag:hover { background: rgba(38, 229, 190, 0.13); border-color: var(--cyan); box-shadow: 0 0 10px rgba(38, 229, 190, 0.18); color: var(--text); }
 
         .video-list { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .video-item { background: rgba(5, 10, 13, 0.48); border: 1px solid rgba(90, 130, 143, 0.2); padding: 10px; }
